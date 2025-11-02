@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <link
+      id="app-favicon"
+      rel="icon"
+      type="image/png"
+      href="https://placehold.co/128x128/E1E7EF/1F2937?text=App" />
+    <link
+      id="app-touch-icon"
+      rel="apple-touch-icon"
+      href="https://placehold.co/180x180/E1E7EF/1F2937?text=App" />
+    <title>MadnessBot - AI Master Mechanic Assistant</title>
+    <meta name="description" content="MadnessBot - Your AI-powered Master Mechanic assistant. Get expert diagnostic guidance, real-time parts sourcing, and tool inventory management for automotive repair shops." />
+    <meta name="keywords" content="automotive AI, mechanic assistant, diagnostic software, parts sourcing, tool inventory, auto repair, TSB search" />
+
+    <script>
+      (function () {
+        var appLogo = "%VITE_APP_LOGO%";
+        if (appLogo) {
+          var favicon = document.getElementById("app-favicon");
+          var touchIcon = document.getElementById("app-touch-icon");
+          if (favicon) favicon.setAttribute("href", appLogo);
+          if (touchIcon) touchIcon.setAttribute("href", appLogo);
+        }
+
+        var appTitle = "%VITE_APP_TITLE%";
+        if (appTitle) {
+          document.title = appTitle;
+        }
+      })();
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JZKLEEF89F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JZKLEEF89F');
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        var analyticsEndpoint = "%VITE_ANALYTICS_ENDPOINT%";
+        var analyticsWebsiteId = "%VITE_ANALYTICS_WEBSITE_ID%";
+
+        if (!analyticsEndpoint || !analyticsWebsiteId) {
+          return;
+        }
+
+        var script = document.createElement("script");
+        script.defer = true;
+        script.src = analyticsEndpoint.replace(/\/$/, "") + "/umami";
+        script.setAttribute("data-website-id", analyticsWebsiteId);
+        document.body.appendChild(script);
+      })();
+    </script>
+  </body>
+
+</html>
