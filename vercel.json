@@ -1,8 +1,6 @@
 {
-  "version": 3,
-  "framework": "vite",
+  "version": 2,
   "buildCommand": "pnpm run build:vercel",
-  "devCommand": "pnpm run dev",
   "outputDirectory": "dist/public",
   "routes": [
     { "handle": "filesystem" },
