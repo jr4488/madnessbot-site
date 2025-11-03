@@ -21,6 +21,14 @@ export function LanguageToggle() {
       >
         <span className="text-2xl">🇲🇽</span>
       </button>
+      <button
+        onClick={() => setLanguage("pt")}
+        className={`transition-opacity ${language === "pt" ? "opacity-100" : "opacity-50 hover:opacity-75"}`}
+        aria-label="Português (Brasil)"
+        title="Português (Brasil)"
+      >
+        <span className="text-2xl">🇧🇷</span>
+      </button>
     </div>
   );
 }

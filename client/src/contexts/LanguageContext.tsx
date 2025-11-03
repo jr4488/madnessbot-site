@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { translations, TranslationKey } from "@/lib/translations";
 
-type Language = "en" | "es";
+type Language = "en" | "es" | "pt";
 
 interface LanguageContextType {
   language: Language;
@@ -16,7 +16,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== "undefined") {
       const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (stored === "en" || stored === "es") {
+      if (stored === "en" || stored === "es" || stored === "pt") {
         return stored;
       }
     }

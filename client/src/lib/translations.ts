@@ -230,6 +230,122 @@ export const translations = {
     support_back: "← Volver al Inicio",
     support_title: "Soporte",
     support_subtitle: "Manual de usuario completo y documentación para profesionales automotrices",
+  },
+  pt: {
+    // Navigation
+    nav_features: "Recursos",
+    nav_about: "Sobre",
+    nav_pricing: "Planos",
+    nav_support: "Suporte",
+    nav_try: "Testar o MadnessBot",
+
+    // Hero Section
+    hero_title_1: "O Mestre Mecânico ",
+    hero_title_2: "da Sua Oficina",
+    hero_title_3: ", disponível 24/7",
+    hero_subtitle: "Orientação diagnóstica com IA, busca de peças em tempo real e gestão inteligente de ferramentas para profissionais automotivos.",
+    hero_cta_primary: "Experimente o MadnessBot",
+    hero_cta_secondary: "Saiba Mais",
+    hero_note: "100 consultas grátis • Sem cartão de crédito • Acesso completo aos recursos",
+
+    // Comparison Section
+    comp_title: "vs ChatGPT",
+    comp_subtitle: "Feito sob medida para profissionais automotivos, não apenas mais um assistente de IA genérico",
+    comp_madness_title: "MadnessBot",
+    comp_madness_subtitle: "Especialista em IA Automotiva",
+    comp_chatgpt_title: "ChatGPT",
+    comp_chatgpt_subtitle: "IA de uso geral",
+
+    // MadnessBot Features
+    feat_parts_title: "Busca de Peças em Tempo Real",
+    feat_parts_desc: "Pesquise em mais de 17 fornecedores com preços ao vivo e links de compra direta",
+    feat_toolbox_title: "Gestão de Inventário de Ferramentas",
+    feat_toolbox_desc: "Controle suas ferramentas e confira o que precisa vs. o que já possui antes de iniciar serviços",
+    feat_knowledge_title: "Conhecimento Automotivo Específico",
+    feat_knowledge_desc: "Treinado exclusivamente em reparo, diagnóstico e procedimentos automotivos",
+    feat_tsb_title: "Base de Dados de TSB e Recall",
+    feat_tsb_desc: "Acesso em tempo real a boletins técnicos e campanhas de recall",
+    feat_memory_title: "Sistema de Memória Persistente",
+    feat_memory_desc: "Lembra permanentemente todas as conversas, veículos e histórico de reparos",
+    feat_video_title: "Demonstrações de Vídeo Personalizadas",
+    feat_video_desc: "Gere vídeos de reparo sob demanda para qualquer procedimento",
+    feat_image_title: "Análise de Imagens",
+    feat_image_desc: "Envie fotos de peças, danos ou ordens de serviço para análise instantânea",
+    feat_price_title: "Preço Acessível",
+    feat_price_desc: "$19,99/mês - mais barato que AllData, Mitchell1 e ChatGPT",
+
+    // ChatGPT Limitations
+    limit_parts_title: "Sem Integração de Peças",
+    limit_parts_desc: "Não consegue pesquisar fornecedores nem oferecer preços em tempo real",
+    limit_toolbox_title: "Sem Gestão de Ferramentas",
+    limit_toolbox_desc: "Não consegue rastrear seu inventário ou verificar disponibilidade de ferramentas",
+    limit_knowledge_title: "Conhecimento Geral",
+    limit_knowledge_desc: "Treinado em tudo, sem especialização em trabalho automotivo",
+    limit_tsb_title: "Sem Acesso a TSB",
+    limit_tsb_desc: "Não consegue buscar boletins técnicos ou recalls",
+    limit_memory_title: "Memória Limitada",
+    limit_memory_desc: "Esquece as conversas depois que a sessão termina, sem histórico de reparos",
+    limit_video_title: "Geração de Vídeo Genérica",
+    limit_video_desc: "Não é especializado em demonstrações de reparo automotivo",
+    limit_image_title: "Análise de Imagem Básica",
+    limit_image_desc: "Entendimento geral de imagens, sem diagnósticos automotivos específicos",
+    limit_price_title: "Custo Maior",
+    limit_price_desc: "$30/mês no plano Plus, poucos recursos para o setor automotivo",
+
+    comp_bottom_text: "O MadnessBot foi criado para profissionais automotivos. Cada recurso foi pensado para economizar tempo, reduzir custos e aumentar a precisão do diagnóstico.",
+    comp_cta: "Teste o MadnessBot Grátis",
+
+    // Pricing Section
+    pricing_title: "Planos Simples e Transparentes",
+    pricing_subtitle: "Comece grátis e faça o upgrade quando estiver pronto. Sem taxas escondidas.",
+    pricing_popular: "Mais Popular",
+
+    pricing_trial_title: "Teste",
+    pricing_trial_price: "Grátis",
+    pricing_trial_desc: "Perfeito para experimentar",
+    pricing_trial_feat1: "100 consultas gratuitas",
+    pricing_trial_feat2: "Capacidades diagnósticas completas",
+    pricing_trial_feat3: "Todos os recursos liberados",
+    pricing_trial_feat4: "Análise de imagem e vídeo",
+    pricing_trial_feat5: "Gestão de inventário de ferramentas",
+    pricing_trial_cta: "Iniciar Teste Grátis",
+
+    pricing_premium_title: "Premium",
+    pricing_premium_price: "$19,99",
+    pricing_premium_period: "/mês",
+    pricing_premium_desc: "Para oficinas profissionais",
+    pricing_premium_feat1: "Consultas ilimitadas",
+    pricing_premium_feat2: "Geração e análise de imagens",
+    pricing_premium_feat3: "Demonstrações em vídeo",
+    pricing_premium_feat4: "Suporte prioritário",
+    pricing_premium_feat5: "Busca avançada de TSB",
+    pricing_premium_feat6: "Gestão de inventário de ferramentas",
+    pricing_premium_feat7: "Memória persistente",
+    pricing_premium_cta: "Começar Agora",
+
+    // CTA Section
+    cta_title: "Pronto para Transformar Sua Oficina?",
+    cta_subtitle: "Junte-se a milhares de profissionais automotivos que usam o MadnessBot para diagnosticar mais rápido, reparar com mais precisão e crescer o negócio.",
+    cta_button: "Teste o MadnessBot Grátis",
+    cta_note: "Sem cartão de crédito • 100 consultas grátis • Cancele quando quiser",
+
+    // Footer
+    footer_desc: "Seu assistente Mestre Mecânico com IA. Disponível 24/7 para diagnósticos automotivos, busca de peças e gestão de ferramentas.",
+    footer_quick_links: "Links Rápidos",
+    footer_link_home: "Início",
+    footer_link_features: "Recursos",
+    footer_link_pricing: "Planos",
+    footer_link_support: "Suporte",
+    footer_link_try: "Testar o MadnessBot",
+    footer_get_started: "Começar",
+    footer_get_started_desc: "Pronto para transformar sua oficina com diagnósticos guiados por IA?",
+    footer_cta: "Iniciar Teste Grátis",
+    footer_copyright: "© 2025 MadnessBot. Todos os direitos reservados",
+
+    // Support Page
+    support_back: "← Voltar para o Início",
+    support_title: "Suporte",
+    support_subtitle: "Manual completo do usuário e documentação para profissionais automotivos",
   }
 };
 
