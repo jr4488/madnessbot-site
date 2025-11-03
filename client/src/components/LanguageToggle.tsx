@@ -19,7 +19,7 @@ export function LanguageToggle() {
         aria-label="Español"
         title="Español"
       >
-        <span className="text-2xl">🇪🇸</span>
+        <span className="text-2xl">🇲🇽</span>
       </button>
     </div>
   );

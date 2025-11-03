@@ -17,28 +17,32 @@ export default function SEO({
     // Update document title
     document.title = title;
 
-    // Update or create meta tags
-    const updateMetaTag = (property: string, content: string) => {
-      let element = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement;
+    const ensureMetaTag = (attribute: "name" | "property", key: string, content: string) => {
+      let element = document.querySelector(
+        `meta[${attribute}="${key}"]`
+      ) as HTMLMetaElement | null;
       if (!element) {
         element = document.createElement("meta");
-        element.setAttribute("property", property);
+        element.setAttribute(attribute, key);
         document.head.appendChild(element);
       }
-      element.content = content;
+      element.setAttribute("content", content);
     };
 
+    // Standard meta description
+    ensureMetaTag("name", "description", description);
+
     // Open Graph tags
-    updateMetaTag("og:title", title);
-    updateMetaTag("og:description", description);
-    updateMetaTag("og:url", url);
-    updateMetaTag("og:type", type);
-    updateMetaTag("og:site_name", "MadnessBot");
+    ensureMetaTag("property", "og:title", title);
+    ensureMetaTag("property", "og:description", description);
+    ensureMetaTag("property", "og:url", url);
+    ensureMetaTag("property", "og:type", type);
+    ensureMetaTag("property", "og:site_name", "MadnessBot");
 
     // Twitter Card tags
-    updateMetaTag("twitter:card", "summary_large_image");
-    updateMetaTag("twitter:title", title);
-    updateMetaTag("twitter:description", description);
+    ensureMetaTag("name", "twitter:card", "summary_large_image");
+    ensureMetaTag("name", "twitter:title", title);
+    ensureMetaTag("name", "twitter:description", description);
 
     // Structured Data (JSON-LD)
     const structuredData = {

@@ -115,7 +115,7 @@
     {
       "id": "-tabla-de-contenidos",
       "title": "📖 Tabla de Contenidos",
-      "content": "1. [Primeros Pasos](#getting-started)\n2. [Funciones Básicas](#basic-features)\n3. [Funciones Avanzadas](#advanced-features)\n4. [Gestión de Inventario de Herramientas](#tool-inventory-management)\n5. [Análisis de Imágenes](#image-analysis)\n6. [Demostraciones en Video](#video-demonstrations)\n7. [Búsqueda Web y Suministro de Piezas](#web-search--parts-sourcing)\n8. [Memoria e Historial de Conversación](#memory--conversation-history)\n9. [Gestión de Cuenta](#account-management)\n10. [Consejos y Mejores Prácticas](#tips--best-practices)\n11. [Solución de Problemas](#troubleshooting)\n12. [Preguntas Frecuentes (FAQ)](#faq)\n\n---"
+      "content": "1. [Primeros Pasos](#primeros-pasos)\n2. [Funciones Básicas](#caractersticas-bsicas)\n3. [Funciones Avanzadas](#funciones-avanzadas)\n4. [Gestión de Inventario de Herramientas](#gestin-de-inventario-de-herramientas)\n5. [Análisis de Imágenes](#anlisis-de-imgenes)\n6. [Demostraciones en Video](#demostraciones-en-video)\n7. [Búsqueda Web y Suministro de Piezas](#bsqueda-web-y-suministro-de-piezas)\n8. [Memoria e Historial de Conversación](#memoria-e-historial-de-conversacin)\n9. [Gestión de Cuenta](#gestin-de-la-cuenta)\n10. [Consejos y Mejores Prácticas](#consejos-y-mejores-prcticas)\n11. [Solución de Problemas](#solucin-de-problemas)\n12. [Preguntas Frecuentes (FAQ)](#preguntas-frecuentes-faq)\n\n---"
     },
     {
       "id": "primeros-pasos",
