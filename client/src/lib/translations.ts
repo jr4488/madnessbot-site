@@ -90,8 +90,8 @@ export const translations = {
     pricing_pro_cta: "Upgrade to Pro",
 
     pricing_ent_title: "Enterprise",
-    pricing_ent_price: "Custom",
-    pricing_ent_period: "",
+    pricing_ent_price: "$199.95",
+    pricing_ent_period: "/month",
     pricing_ent_desc: "For large organizations",
     pricing_ent_feat1: "Unlimited queries",
     pricing_ent_feat2: "API Access",
@@ -215,8 +215,8 @@ export const translations = {
     pricing_pro_cta: "Actualizar a Pro",
 
     pricing_ent_title: "Empresarial",
-    pricing_ent_price: "Personalizado",
-    pricing_ent_period: "",
+    pricing_ent_price: "$199.95",
+    pricing_ent_period: "/mes",
     pricing_ent_desc: "Para grandes organizaciones",
     pricing_ent_feat1: "Consultas ilimitadas",
     pricing_ent_feat2: "Acceso a API",
@@ -340,8 +340,8 @@ export const translations = {
     pricing_pro_cta: "Atualizar para Pro",
 
     pricing_ent_title: "Empresarial",
-    pricing_ent_price: "Sob Consulta",
-    pricing_ent_period: "",
+    pricing_ent_price: "$199,95",
+    pricing_ent_period: "/mês",
     pricing_ent_desc: "Para grandes organizações",
     pricing_ent_feat1: "Consultas ilimitadas",
     pricing_ent_feat2: "Acesso à API",

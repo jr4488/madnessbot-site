@@ -311,7 +311,7 @@ export default function Home() {
                   <CardTitle className="text-2xl">{t("pricing_ent_title")}</CardTitle>
                   <div className="mt-4">
                     <span className="text-4xl font-bold">{t("pricing_ent_price")}</span>
-                    <span className="text-muted-foreground">{t("pricing_ent_period")}</span>
+                    {t("pricing_ent_period") && <span className="text-muted-foreground">{t("pricing_ent_period")}</span>}
                   </div>
                   <CardDescription className="mt-2">{t("pricing_ent_desc")}</CardDescription>
                 </CardHeader>
