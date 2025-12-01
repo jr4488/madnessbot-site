@@ -6,7 +6,7 @@ export const translations = {
     nav_pricing: "Pricing",
     nav_support: "Support",
     nav_try: "Try MadnessBot",
-    
+
     // Hero Section
     hero_title_1: "Your Shop's ",
     hero_title_2: "Master Mechanic",
@@ -15,7 +15,7 @@ export const translations = {
     hero_cta_primary: "Try MadnessBot Now",
     hero_cta_secondary: "Learn More",
     hero_note: "100 free queries • No credit card required • Full feature access",
-    
+
     // Comparison Section
     comp_title: "vs ChatGPT",
     comp_subtitle: "Purpose-built for automotive professionals, not just another general AI assistant",
@@ -23,7 +23,7 @@ export const translations = {
     comp_madness_subtitle: "Automotive AI Specialist",
     comp_chatgpt_title: "ChatGPT",
     comp_chatgpt_subtitle: "General Purpose AI",
-    
+
     // MadnessBot Features
     feat_parts_title: "Real-Time Parts Sourcing",
     feat_parts_desc: "Search 17+ suppliers with live pricing and direct purchase links",
@@ -41,7 +41,7 @@ export const translations = {
     feat_image_desc: "Upload photos of parts, damage, or work orders for instant analysis",
     feat_price_title: "Affordable Pricing",
     feat_price_desc: "$19.99/month - cheaper than AllData, Mitchell1 and ChatGPT",
-    
+
     // ChatGPT Limitations
     limit_parts_title: "No Parts Integration",
     limit_parts_desc: "Can't search suppliers or provide real-time pricing",
@@ -59,44 +59,53 @@ export const translations = {
     limit_image_desc: "General image understanding, not automotive-specific diagnostics",
     limit_price_title: "Higher Cost",
     limit_price_desc: "$30 /month for Plus, limited features for automotive work",
-    
+
     comp_bottom_text: "MadnessBot is purpose-built for automotive professionals. Every feature is designed to save you time, reduce costs, and improve diagnostic accuracy.",
     comp_cta: "Try MadnessBot Free",
-    
+
     // Pricing Section
     pricing_title: "Simple, Transparent Pricing",
-    pricing_subtitle: "Start free, upgrade when you're ready. No hidden fees.",
+    pricing_subtitle: "Choose the plan that fits your needs. Upgrade or cancel anytime.",
     pricing_popular: "Most Popular",
-    
-    pricing_trial_title: "Trial",
-    pricing_trial_price: "Free",
-    pricing_trial_desc: "Perfect for testing",
-    pricing_trial_feat1: "100 free queries",
-    pricing_trial_feat2: "Full diagnostic capabilities",
-    pricing_trial_feat3: "All features enabled",
-    pricing_trial_feat4: "Image & video analysis",
-    pricing_trial_feat5: "Tool inventory management",
-    pricing_trial_cta: "Start Free Trial",
-    
-    pricing_premium_title: "Premium",
-    pricing_premium_price: "$19.99",
-    pricing_premium_period: "/month",
-    pricing_premium_desc: "For professional shops",
-    pricing_premium_feat1: "Unlimited queries",
-    pricing_premium_feat2: "Image generation & analysis",
-    pricing_premium_feat3: "Video demonstrations",
-    pricing_premium_feat4: "Priority support",
-    pricing_premium_feat5: "Advanced TSB search",
-    pricing_premium_feat6: "Tool inventory management",
-    pricing_premium_feat7: "Persistent memory",
-    pricing_premium_cta: "Get Started",
-    
+
+    pricing_diy_title: "DIY",
+    pricing_diy_price: "$19.99",
+    pricing_diy_period: "/month",
+    pricing_diy_desc: "For hobbyists & DIYers",
+    pricing_diy_feat1: "500 queries / month",
+    pricing_diy_feat2: "Parts sourcing",
+    pricing_diy_feat3: "Toolbox management",
+    pricing_diy_feat4: "Basic diagnostics",
+    pricing_diy_cta: "Get Started",
+
+    pricing_pro_title: "Pro",
+    pricing_pro_price: "$49.99",
+    pricing_pro_period: "/month",
+    pricing_pro_desc: "For professional shops",
+    pricing_pro_feat1: "1500 queries / month",
+    pricing_pro_feat2: "Image generation",
+    pricing_pro_feat3: "Video demonstrations",
+    pricing_pro_feat4: "Priority support",
+    pricing_pro_feat5: "Advanced TSB search",
+    pricing_pro_cta: "Upgrade to Pro",
+
+    pricing_ent_title: "Enterprise",
+    pricing_ent_price: "Custom",
+    pricing_ent_period: "",
+    pricing_ent_desc: "For large organizations",
+    pricing_ent_feat1: "Unlimited queries",
+    pricing_ent_feat2: "API Access",
+    pricing_ent_feat3: "Custom integrations",
+    pricing_ent_feat4: "Dedicated support",
+    pricing_ent_feat5: "Centralized billing",
+    pricing_ent_cta: "Contact Sales",
+
     // CTA Section
     cta_title: "Ready to Transform Your Shop?",
     cta_subtitle: "Join thousands of automotive professionals using MadnessBot to diagnose faster, fix smarter, and grow their business.",
     cta_button: "Try MadnessBot Free",
     cta_note: "No credit card required • 100 free queries • Cancel anytime",
-    
+
     // Footer
     footer_desc: "Your AI-powered Master Mechanic assistant. Available 24/7 for automotive diagnostics, parts sourcing, and tool management.",
     footer_quick_links: "Quick Links",
@@ -109,7 +118,7 @@ export const translations = {
     footer_get_started_desc: "Ready to transform your shop with AI-powered diagnostics?",
     footer_cta: "Start Free Trial",
     footer_copyright: "© 2025 MadnessBot. All rights reserved",
-    
+
     // Support Page
     support_back: "← Back to Home",
     support_title: "Support",
@@ -122,7 +131,7 @@ export const translations = {
     nav_pricing: "Precios",
     nav_support: "Soporte",
     nav_try: "Probar MadnessBot",
-    
+
     // Hero Section
     hero_title_1: "El ",
     hero_title_2: "Mecánico Maestro",
@@ -131,7 +140,7 @@ export const translations = {
     hero_cta_primary: "Probar MadnessBot Ahora",
     hero_cta_secondary: "Más Información",
     hero_note: "100 consultas gratis • Sin tarjeta de crédito • Acceso completo a funciones",
-    
+
     // Comparison Section
     comp_title: "vs ChatGPT",
     comp_subtitle: "Diseñado específicamente para profesionales automotrices, no solo otro asistente de IA general",
@@ -139,7 +148,7 @@ export const translations = {
     comp_madness_subtitle: "Especialista en IA Automotriz",
     comp_chatgpt_title: "ChatGPT",
     comp_chatgpt_subtitle: "IA de Propósito General",
-    
+
     // MadnessBot Features
     feat_parts_title: "Búsqueda de Piezas en Tiempo Real",
     feat_parts_desc: "Busca en más de 17 proveedores con precios en vivo y enlaces de compra directa",
@@ -157,7 +166,7 @@ export const translations = {
     feat_image_desc: "Sube fotos de piezas, daños u órdenes de trabajo para análisis instantáneo",
     feat_price_title: "Precios Accesibles",
     feat_price_desc: "$19.99/mes - más barato que AllData, Mitchell1 y ChatGPT",
-    
+
     // ChatGPT Limitations
     limit_parts_title: "Sin Integración de Piezas",
     limit_parts_desc: "No puede buscar proveedores ni proporcionar precios en tiempo real",
@@ -175,44 +184,53 @@ export const translations = {
     limit_image_desc: "Comprensión general de imágenes, no diagnósticos específicos automotrices",
     limit_price_title: "Costo Más Alto",
     limit_price_desc: "$30/mes para Plus, funciones limitadas para trabajo automotriz",
-    
+
     comp_bottom_text: "MadnessBot está diseñado específicamente para profesionales automotrices. Cada función está diseñada para ahorrarte tiempo, reducir costos y mejorar la precisión diagnóstica.",
     comp_cta: "Probar MadnessBot Gratis",
-    
+
     // Pricing Section
     pricing_title: "Precios Simples y Transparentes",
-    pricing_subtitle: "Comienza gratis, actualiza cuando estés listo. Sin tarifas ocultas.",
+    pricing_subtitle: "Elige el plan que se adapte a tus necesidades. Actualiza o cancela en cualquier momento.",
     pricing_popular: "Más Popular",
-    
-    pricing_trial_title: "Prueba",
-    pricing_trial_price: "Gratis",
-    pricing_trial_desc: "Perfecto para probar",
-    pricing_trial_feat1: "100 consultas gratis",
-    pricing_trial_feat2: "Capacidades diagnósticas completas",
-    pricing_trial_feat3: "Todas las funciones habilitadas",
-    pricing_trial_feat4: "Análisis de imagen y video",
-    pricing_trial_feat5: "Gestión de inventario de herramientas",
-    pricing_trial_cta: "Comenzar Prueba Gratis",
-    
-    pricing_premium_title: "Premium",
-    pricing_premium_price: "$19.99",
-    pricing_premium_period: "/mes",
-    pricing_premium_desc: "Para talleres profesionales",
-    pricing_premium_feat1: "Consultas ilimitadas",
-    pricing_premium_feat2: "Generación y análisis de imágenes",
-    pricing_premium_feat3: "Demostraciones en video",
-    pricing_premium_feat4: "Soporte prioritario",
-    pricing_premium_feat5: "Búsqueda avanzada de TSB",
-    pricing_premium_feat6: "Gestión de inventario de herramientas",
-    pricing_premium_feat7: "Memoria persistente",
-    pricing_premium_cta: "Comenzar",
-    
+
+    pricing_diy_title: "Bricolaje",
+    pricing_diy_price: "$19.99",
+    pricing_diy_period: "/mes",
+    pricing_diy_desc: "Para aficionados y bricolaje",
+    pricing_diy_feat1: "500 consultas / mes",
+    pricing_diy_feat2: "Búsqueda de piezas",
+    pricing_diy_feat3: "Gestión de caja de herramientas",
+    pricing_diy_feat4: "Diagnósticos básicos",
+    pricing_diy_cta: "Comenzar",
+
+    pricing_pro_title: "Profesional",
+    pricing_pro_price: "$49.99",
+    pricing_pro_period: "/mes",
+    pricing_pro_desc: "Para talleres profesionales",
+    pricing_pro_feat1: "1500 consultas / mes",
+    pricing_pro_feat2: "Generación de imágenes",
+    pricing_pro_feat3: "Demostraciones en video",
+    pricing_pro_feat4: "Soporte prioritario",
+    pricing_pro_feat5: "Búsqueda avanzada de TSB",
+    pricing_pro_cta: "Actualizar a Pro",
+
+    pricing_ent_title: "Empresarial",
+    pricing_ent_price: "Personalizado",
+    pricing_ent_period: "",
+    pricing_ent_desc: "Para grandes organizaciones",
+    pricing_ent_feat1: "Consultas ilimitadas",
+    pricing_ent_feat2: "Acceso a API",
+    pricing_ent_feat3: "Integraciones personalizadas",
+    pricing_ent_feat4: "Soporte dedicado",
+    pricing_ent_feat5: "Facturación centralizada",
+    pricing_ent_cta: "Contactar Ventas",
+
     // CTA Section
     cta_title: "¿Listo para Transformar Tu Taller?",
     cta_subtitle: "Únete a miles de profesionales automotrices que usan MadnessBot para diagnosticar más rápido, reparar mejor y hacer crecer su negocio.",
     cta_button: "Probar MadnessBot Gratis",
     cta_note: "Sin tarjeta de crédito • 100 consultas gratis • Cancela en cualquier momento",
-    
+
     // Footer
     footer_desc: "Tu asistente de Mecánico Maestro impulsado por IA. Disponible 24/7 para diagnósticos automotrices, búsqueda de piezas y gestión de herramientas.",
     footer_quick_links: "Enlaces Rápidos",
@@ -225,7 +243,7 @@ export const translations = {
     footer_get_started_desc: "¿Listo para transformar tu taller con diagnósticos impulsados por IA?",
     footer_cta: "Comenzar Prueba Gratis",
     footer_copyright: "© 2025 MadnessBot. Todos los derechos reservados",
-    
+
     // Support Page
     support_back: "← Volver al Inicio",
     support_title: "Soporte",
@@ -297,31 +315,40 @@ export const translations = {
 
     // Pricing Section
     pricing_title: "Planos Simples e Transparentes",
-    pricing_subtitle: "Comece grátis e faça o upgrade quando estiver pronto. Sem taxas escondidas.",
+    pricing_subtitle: "Escolha o plano que atende às suas necessidades. Atualize ou cancele a qualquer momento.",
     pricing_popular: "Mais Popular",
 
-    pricing_trial_title: "Teste",
-    pricing_trial_price: "Grátis",
-    pricing_trial_desc: "Perfeito para experimentar",
-    pricing_trial_feat1: "100 consultas gratuitas",
-    pricing_trial_feat2: "Capacidades diagnósticas completas",
-    pricing_trial_feat3: "Todos os recursos liberados",
-    pricing_trial_feat4: "Análise de imagem e vídeo",
-    pricing_trial_feat5: "Gestão de inventário de ferramentas",
-    pricing_trial_cta: "Iniciar Teste Grátis",
+    pricing_diy_title: "Faça Você Mesmo",
+    pricing_diy_price: "$19,99",
+    pricing_diy_period: "/mês",
+    pricing_diy_desc: "Para entusiastas e hobbistas",
+    pricing_diy_feat1: "500 consultas / mês",
+    pricing_diy_feat2: "Busca de peças",
+    pricing_diy_feat3: "Gestão de ferramentas",
+    pricing_diy_feat4: "Diagnósticos básicos",
+    pricing_diy_cta: "Começar",
 
-    pricing_premium_title: "Premium",
-    pricing_premium_price: "$19,99",
-    pricing_premium_period: "/mês",
-    pricing_premium_desc: "Para oficinas profissionais",
-    pricing_premium_feat1: "Consultas ilimitadas",
-    pricing_premium_feat2: "Geração e análise de imagens",
-    pricing_premium_feat3: "Demonstrações em vídeo",
-    pricing_premium_feat4: "Suporte prioritário",
-    pricing_premium_feat5: "Busca avançada de TSB",
-    pricing_premium_feat6: "Gestão de inventário de ferramentas",
-    pricing_premium_feat7: "Memória persistente",
-    pricing_premium_cta: "Começar Agora",
+    pricing_pro_title: "Profissional",
+    pricing_pro_price: "$49,99",
+    pricing_pro_period: "/mês",
+    pricing_pro_desc: "Para oficinas profissionais",
+    pricing_pro_feat1: "1500 consultas / mês",
+    pricing_pro_feat2: "Geração de imagens",
+    pricing_pro_feat3: "Demonstrações em vídeo",
+    pricing_pro_feat4: "Suporte prioritário",
+    pricing_pro_feat5: "Busca avançada de TSB",
+    pricing_pro_cta: "Atualizar para Pro",
+
+    pricing_ent_title: "Empresarial",
+    pricing_ent_price: "Sob Consulta",
+    pricing_ent_period: "",
+    pricing_ent_desc: "Para grandes organizações",
+    pricing_ent_feat1: "Consultas ilimitadas",
+    pricing_ent_feat2: "Acesso à API",
+    pricing_ent_feat3: "Integrações personalizadas",
+    pricing_ent_feat4: "Suporte dedicado",
+    pricing_ent_feat5: "Faturamento centralizado",
+    pricing_ent_cta: "Falar com Vendas",
 
     // CTA Section
     cta_title: "Pronto para Transformar Sua Oficina?",

@@ -13,7 +13,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <SEO />
       <Navigation />
-      
+
       <main>
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 overflow-hidden">
@@ -202,7 +202,7 @@ export default function Home() {
             <p className="text-center text-muted-foreground mt-12 max-w-3xl mx-auto">
               {t("comp_bottom_text")}
             </p>
-            
+
             <div className="flex justify-center mt-8">
               <Button size="lg" asChild className="text-lg px-8">
                 <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
@@ -221,96 +221,126 @@ export default function Home() {
               <p className="text-xl text-muted-foreground">{t("pricing_subtitle")}</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {/* Trial Plan */}
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {/* DIY Plan */}
               <Card>
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">{t("pricing_trial_title")}</CardTitle>
+                  <CardTitle className="text-2xl">{t("pricing_diy_title")}</CardTitle>
                   <div className="mt-4">
-                    <span className="text-5xl font-bold">{t("pricing_trial_price")}</span>
+                    <span className="text-4xl font-bold">{t("pricing_diy_price")}</span>
+                    <span className="text-muted-foreground">{t("pricing_diy_period")}</span>
                   </div>
-                  <CardDescription className="mt-2">{t("pricing_trial_desc")}</CardDescription>
+                  <CardDescription className="mt-2">{t("pricing_diy_desc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_trial_feat1")}</span>
+                      <span>{t("pricing_diy_feat1")}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_trial_feat2")}</span>
+                      <span>{t("pricing_diy_feat2")}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_trial_feat3")}</span>
+                      <span>{t("pricing_diy_feat3")}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_trial_feat4")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_trial_feat5")}</span>
+                      <span>{t("pricing_diy_feat4")}</span>
                     </li>
                   </ul>
                   <Button className="w-full" variant="outline" asChild>
                     <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
-                      {t("pricing_trial_cta")}
+                      {t("pricing_diy_cta")}
                     </a>
                   </Button>
                 </CardContent>
               </Card>
 
-              {/* Premium Plan */}
-              <Card className="border-primary shadow-lg relative">
+              {/* Pro Plan */}
+              <Card className="border-primary shadow-lg relative transform md:-translate-y-4">
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
                     {t("pricing_popular")}
                   </span>
                 </div>
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">{t("pricing_premium_title")}</CardTitle>
+                  <CardTitle className="text-2xl">{t("pricing_pro_title")}</CardTitle>
                   <div className="mt-4">
-                    <span className="text-5xl font-bold">{t("pricing_premium_price")}</span>
-                    <span className="text-muted-foreground">{t("pricing_premium_period")}</span>
+                    <span className="text-5xl font-bold">{t("pricing_pro_price")}</span>
+                    <span className="text-muted-foreground">{t("pricing_pro_period")}</span>
                   </div>
-                  <CardDescription className="mt-2">{t("pricing_premium_desc")}</CardDescription>
+                  <CardDescription className="mt-2">{t("pricing_pro_desc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_premium_feat1")}</span>
+                      <span>{t("pricing_pro_feat1")}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_premium_feat2")}</span>
+                      <span>{t("pricing_pro_feat2")}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_premium_feat3")}</span>
+                      <span>{t("pricing_pro_feat3")}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_premium_feat4")}</span>
+                      <span>{t("pricing_pro_feat4")}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_premium_feat5")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_premium_feat6")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_premium_feat7")}</span>
+                      <span>{t("pricing_pro_feat5")}</span>
                     </li>
                   </ul>
-                  <Button className="w-full" asChild>
+                  <Button className="w-full" size="lg" asChild>
                     <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
-                      {t("pricing_premium_cta")}
+                      {t("pricing_pro_cta")}
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Enterprise Plan */}
+              <Card>
+                <CardHeader className="text-center">
+                  <CardTitle className="text-2xl">{t("pricing_ent_title")}</CardTitle>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold">{t("pricing_ent_price")}</span>
+                    <span className="text-muted-foreground">{t("pricing_ent_period")}</span>
+                  </div>
+                  <CardDescription className="mt-2">{t("pricing_ent_desc")}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-primary" size={20} />
+                      <span>{t("pricing_ent_feat1")}</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-primary" size={20} />
+                      <span>{t("pricing_ent_feat2")}</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-primary" size={20} />
+                      <span>{t("pricing_ent_feat3")}</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-primary" size={20} />
+                      <span>{t("pricing_ent_feat4")}</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-primary" size={20} />
+                      <span>{t("pricing_ent_feat5")}</span>
+                    </li>
+                  </ul>
+                  <Button className="w-full" variant="outline" asChild>
+                    <a href="mailto:sales@madnesstools.com">
+                      {t("pricing_ent_cta")}
                     </a>
                   </Button>
                 </CardContent>
