@@ -10,9 +10,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold mb-4" style={{ fontFamily: "'Zen Dots', cursive", color: '#f52424' }}>
-              MadnessBot
-            </h3>
+            <div className="flex items-center gap-2 mb-4">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none">
+                <rect x="5" y="5" width="90" height="90" rx="20" fill="#FF4D00"/>
+                <path d="M58 18 L42 46 L52 46 L38 82 L62 48 L50 48 L66 18 Z" fill="#fff"/>
+              </svg>
+              <h3 className="text-xl font-bold" style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>
+                MadnessBot
+              </h3>
+            </div>
             <p className="text-muted-foreground text-sm">
               {t("footer_desc")}
             </p>

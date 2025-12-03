@@ -33,8 +33,13 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <span className="text-2xl font-bold" style={{ fontFamily: "'Zen Dots', cursive", color: '#f72626' }}>
+            <div className="flex items-center gap-3 cursor-pointer">
+              {/* MadnessBot Logo Icon */}
+              <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+                <rect x="5" y="5" width="90" height="90" rx="20" fill="#FF4D00"/>
+                <path d="M58 18 L42 46 L52 46 L38 82 L62 48 L50 48 L66 18 Z" fill="#fff"/>
+              </svg>
+              <span className="text-xl font-bold" style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>
                 MadnessBot
               </span>
             </div>

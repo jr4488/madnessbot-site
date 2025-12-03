@@ -6,6 +6,30 @@ import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CheckCircle2 } from "lucide-react";
 
+// MadnessBot Lightning Bolt SVG Component
+const LightningBolt = ({ className = "", size = 20 }: { className?: string; size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M58 10 L38 48 L52 48 L34 90 L66 46 L50 46 L70 10 Z" fill="currentColor"/>
+    <circle cx="74" cy="26" r="3" fill="currentColor" opacity="0.7"/>
+    <circle cx="26" cy="74" r="3" fill="currentColor" opacity="0.7"/>
+  </svg>
+);
+
+// Spark Pattern Background Component
+const SparkPattern = () => (
+  <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 350 120" fill="none" preserveAspectRatio="xMidYMid slice">
+    <circle cx="35" cy="20" r="18" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.4"/>
+    <circle cx="320" cy="100" r="15" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.4"/>
+    <path d="M175 2 L155 50 L168 50 L142 118 L188 58 L172 58 L205 2 Z" fill="#FF4D00" opacity="0.3"/>
+    <path d="M70 20 L58 50 L66 50 L50 90 L80 55 L70 55 L88 20 Z" fill="#FF4D00" opacity="0.15"/>
+    <path d="M280 28 L265 65 L276 65 L256 110 L295 72 L282 72 L305 28 Z" fill="#FF4D00" opacity="0.15"/>
+    <circle cx="212" cy="15" r="3.5" fill="#FF4D00" opacity="0.4"/>
+    <circle cx="225" cy="28" r="2.5" fill="#FF4D00" opacity="0.3"/>
+    <circle cx="137" cy="105" r="3.5" fill="#FF4D00" opacity="0.4"/>
+    <circle cx="125" cy="92" r="2.5" fill="#FF4D00" opacity="0.3"/>
+  </svg>
+);
+
 export default function Home() {
   const { t } = useLanguage();
 
@@ -17,11 +41,12 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FF4D00]/5 via-background to-background" />
+          <SparkPattern />
           <div className="container relative">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center mb-6">
               {t("hero_title_1")}
-              <span className="text-primary" style={{ fontFamily: "'Zen Dots', cursive" }}>
+              <span style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>
                 {t("hero_title_2")}
               </span>
               {t("hero_title_3")}
@@ -30,12 +55,12 @@ export default function Home() {
               {t("hero_subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="text-lg px-8">
+              <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500]">
                 <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
                   {t("hero_cta_primary")}
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8" asChild>
+              <Button size="lg" variant="outline" className="text-lg px-8 border-[#2A2A3A] hover:bg-[#1A1A25]" asChild>
                 <a href="#features">
                   {t("hero_cta_secondary")}
                 </a>
@@ -48,11 +73,11 @@ export default function Home() {
         </section>
 
         {/* Comparison Section */}
-        <section id="features" className="py-20 bg-muted/30">
+        <section id="features" className="py-20 bg-[#111118]">
           <div className="container">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                <span style={{ fontFamily: "'Zen Dots', cursive", color: '#f82525' }}>MadnessBot</span> {t("comp_title")}
+                <span style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>MadnessBot</span> {t("comp_title")}
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 {t("comp_subtitle")}
@@ -61,150 +86,74 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* MadnessBot Column */}
-              <Card className="border-primary shadow-lg shadow-primary/20">
+              <Card className="border-[#FF4D00] shadow-lg bg-[#111118]" style={{ boxShadow: '0 0 30px rgba(255,77,0,0.2)' }}>
                 <CardHeader className="text-center pb-4">
-                  <CardTitle className="text-2xl" style={{ fontFamily: "'Zen Dots', cursive", color: '#f22121' }}>
+                  <CardTitle className="text-2xl" style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>
                     {t("comp_madness_title")}
                   </CardTitle>
-                  <CardDescription className="text-base">{t("comp_madness_subtitle")}</CardDescription>
+                  <CardDescription className="text-base text-[#A3A3A3]">{t("comp_madness_subtitle")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                      <div>
-                        <span className="font-semibold">{t("feat_parts_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("feat_parts_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                      <div>
-                        <span className="font-semibold">{t("feat_toolbox_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("feat_toolbox_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                      <div>
-                        <span className="font-semibold">{t("feat_knowledge_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("feat_knowledge_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                      <div>
-                        <span className="font-semibold">{t("feat_tsb_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("feat_tsb_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                      <div>
-                        <span className="font-semibold">{t("feat_memory_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("feat_memory_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                      <div>
-                        <span className="font-semibold">{t("feat_video_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("feat_video_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                      <div>
-                        <span className="font-semibold">{t("feat_image_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("feat_image_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                      <div>
-                        <span className="font-semibold">{t("feat_price_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("feat_price_desc")}</p>
-                      </div>
-                    </li>
+                    {[
+                      { title: "feat_parts_title", desc: "feat_parts_desc" },
+                      { title: "feat_toolbox_title", desc: "feat_toolbox_desc" },
+                      { title: "feat_knowledge_title", desc: "feat_knowledge_desc" },
+                      { title: "feat_tsb_title", desc: "feat_tsb_desc" },
+                      { title: "feat_memory_title", desc: "feat_memory_desc" },
+                      { title: "feat_video_title", desc: "feat_video_desc" },
+                      { title: "feat_image_title", desc: "feat_image_desc" },
+                      { title: "feat_price_title", desc: "feat_price_desc" },
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="text-[#FF4D00] mt-1 flex-shrink-0" size={20} />
+                        <div>
+                          <span className="font-semibold text-[#F5F5F5]">{t(item.title as any)}</span>
+                          <p className="text-sm text-[#A3A3A3]">{t(item.desc as any)}</p>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </CardContent>
               </Card>
 
               {/* ChatGPT Column */}
-              <Card className="border-muted-foreground/20">
+              <Card className="border-[#2A2A3A] bg-[#111118]">
                 <CardHeader className="text-center pb-4">
-                  <CardTitle className="text-2xl text-muted-foreground">{t("comp_chatgpt_title")}</CardTitle>
-                  <CardDescription className="text-base">{t("comp_chatgpt_subtitle")}</CardDescription>
+                  <CardTitle className="text-2xl text-[#737373]">{t("comp_chatgpt_title")}</CardTitle>
+                  <CardDescription className="text-base text-[#737373]">{t("comp_chatgpt_subtitle")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-muted-foreground/30" />
-                      <div>
-                        <span className="font-semibold text-muted-foreground">{t("limit_parts_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("limit_parts_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-muted-foreground/30" />
-                      <div>
-                        <span className="font-semibold text-muted-foreground">{t("limit_toolbox_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("limit_toolbox_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-muted-foreground/30" />
-                      <div>
-                        <span className="font-semibold text-muted-foreground">{t("limit_knowledge_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("limit_knowledge_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-muted-foreground/30" />
-                      <div>
-                        <span className="font-semibold text-muted-foreground">{t("limit_tsb_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("limit_tsb_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-muted-foreground/30" />
-                      <div>
-                        <span className="font-semibold text-muted-foreground">{t("limit_memory_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("limit_memory_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-muted-foreground/30" />
-                      <div>
-                        <span className="font-semibold text-muted-foreground">{t("limit_video_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("limit_video_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-muted-foreground/30" />
-                      <div>
-                        <span className="font-semibold text-muted-foreground">{t("limit_image_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("limit_image_desc")}</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-muted-foreground/30" />
-                      <div>
-                        <span className="font-semibold text-muted-foreground">{t("limit_price_title")}</span>
-                        <p className="text-sm text-muted-foreground">{t("limit_price_desc")}</p>
-                      </div>
-                    </li>
+                    {[
+                      { title: "limit_parts_title", desc: "limit_parts_desc" },
+                      { title: "limit_toolbox_title", desc: "limit_toolbox_desc" },
+                      { title: "limit_knowledge_title", desc: "limit_knowledge_desc" },
+                      { title: "limit_tsb_title", desc: "limit_tsb_desc" },
+                      { title: "limit_memory_title", desc: "limit_memory_desc" },
+                      { title: "limit_video_title", desc: "limit_video_desc" },
+                      { title: "limit_image_title", desc: "limit_image_desc" },
+                      { title: "limit_price_title", desc: "limit_price_desc" },
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="w-5 h-5 mt-1 flex-shrink-0 rounded-full border-2 border-[#3A3A4A]" />
+                        <div>
+                          <span className="font-semibold text-[#737373]">{t(item.title as any)}</span>
+                          <p className="text-sm text-[#4A4A5A]">{t(item.desc as any)}</p>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </CardContent>
               </Card>
             </div>
 
-            <p className="text-center text-muted-foreground mt-12 max-w-3xl mx-auto">
+            <p className="text-center text-[#A3A3A3] mt-12 max-w-3xl mx-auto">
               {t("comp_bottom_text")}
             </p>
 
             <div className="flex justify-center mt-8">
-              <Button size="lg" asChild className="text-lg px-8">
+              <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500]">
                 <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
                   {t("comp_cta")} <span className="ml-2">→</span>
                 </a>
@@ -214,44 +163,34 @@ export default function Home() {
         </section>
 
         {/* Pricing Section */}
-        <section id="pricing" className="py-20">
+        <section id="pricing" className="py-20 bg-[#0A0A0F]">
           <div className="container">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("pricing_title")}</h2>
-              <p className="text-xl text-muted-foreground">{t("pricing_subtitle")}</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#F5F5F5]">{t("pricing_title")}</h2>
+              <p className="text-xl text-[#A3A3A3]">{t("pricing_subtitle")}</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {/* DIY Plan */}
-              <Card>
+              <Card className="bg-[#111118] border-[#2A2A3A]">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">{t("pricing_diy_title")}</CardTitle>
+                  <CardTitle className="text-2xl text-[#F5F5F5]">{t("pricing_diy_title")}</CardTitle>
                   <div className="mt-4">
-                    <span className="text-4xl font-bold">{t("pricing_diy_price")}</span>
-                    <span className="text-muted-foreground">{t("pricing_diy_period")}</span>
+                    <span className="text-4xl font-bold text-[#F5F5F5]">{t("pricing_diy_price")}</span>
+                    <span className="text-[#A3A3A3]">{t("pricing_diy_period")}</span>
                   </div>
-                  <CardDescription className="mt-2">{t("pricing_diy_desc")}</CardDescription>
+                  <CardDescription className="mt-2 text-[#737373]">{t("pricing_diy_desc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_diy_feat1")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_diy_feat2")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_diy_feat3")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_diy_feat4")}</span>
-                    </li>
+                    {["pricing_diy_feat1", "pricing_diy_feat2", "pricing_diy_feat3", "pricing_diy_feat4"].map((feat, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <CheckCircle2 className="text-[#FF4D00]" size={20} />
+                        <span className="text-[#D4D4D4]">{t(feat as any)}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <Button className="w-full" variant="outline" asChild>
+                  <Button className="w-full border-[#2A2A3A] text-[#D4D4D4] hover:bg-[#1A1A25]" variant="outline" asChild>
                     <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
                       {t("pricing_diy_cta")}
                     </a>
@@ -260,44 +199,30 @@ export default function Home() {
               </Card>
 
               {/* Pro Plan */}
-              <Card className="border-primary shadow-lg relative transform md:-translate-y-4">
+              <Card className="border-[#FF4D00] bg-[#111118] relative transform md:-translate-y-4" style={{ boxShadow: '0 0 30px rgba(255,77,0,0.2)' }}>
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-[#FF4D00] text-white px-4 py-1 rounded-full text-sm font-semibold">
                     {t("pricing_popular")}
                   </span>
                 </div>
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">{t("pricing_pro_title")}</CardTitle>
+                  <CardTitle className="text-2xl text-[#F5F5F5]">{t("pricing_pro_title")}</CardTitle>
                   <div className="mt-4">
-                    <span className="text-5xl font-bold">{t("pricing_pro_price")}</span>
-                    <span className="text-muted-foreground">{t("pricing_pro_period")}</span>
+                    <span className="text-5xl font-bold text-[#F5F5F5]">{t("pricing_pro_price")}</span>
+                    <span className="text-[#A3A3A3]">{t("pricing_pro_period")}</span>
                   </div>
-                  <CardDescription className="mt-2">{t("pricing_pro_desc")}</CardDescription>
+                  <CardDescription className="mt-2 text-[#737373]">{t("pricing_pro_desc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_pro_feat1")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_pro_feat2")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_pro_feat3")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_pro_feat4")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_pro_feat5")}</span>
-                    </li>
+                    {["pricing_pro_feat1", "pricing_pro_feat2", "pricing_pro_feat3", "pricing_pro_feat4", "pricing_pro_feat5"].map((feat, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <CheckCircle2 className="text-[#FF4D00]" size={20} />
+                        <span className="text-[#D4D4D4]">{t(feat as any)}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <Button className="w-full" size="lg" asChild>
+                  <Button className="w-full btn-glow bg-[#FF4D00] hover:bg-[#E64500] text-white" size="lg" asChild>
                     <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
                       {t("pricing_pro_cta")}
                     </a>
@@ -306,39 +231,25 @@ export default function Home() {
               </Card>
 
               {/* Enterprise Plan */}
-              <Card>
+              <Card className="bg-[#111118] border-[#2A2A3A]">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">{t("pricing_ent_title")}</CardTitle>
+                  <CardTitle className="text-2xl text-[#F5F5F5]">{t("pricing_ent_title")}</CardTitle>
                   <div className="mt-4">
-                    <span className="text-4xl font-bold">{t("pricing_ent_price")}</span>
-                    {t("pricing_ent_period") && <span className="text-muted-foreground">{t("pricing_ent_period")}</span>}
+                    <span className="text-4xl font-bold text-[#F5F5F5]">{t("pricing_ent_price")}</span>
+                    {t("pricing_ent_period") && <span className="text-[#A3A3A3]">{t("pricing_ent_period")}</span>}
                   </div>
-                  <CardDescription className="mt-2">{t("pricing_ent_desc")}</CardDescription>
+                  <CardDescription className="mt-2 text-[#737373]">{t("pricing_ent_desc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_ent_feat1")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_ent_feat2")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_ent_feat3")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_ent_feat4")}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-primary" size={20} />
-                      <span>{t("pricing_ent_feat5")}</span>
-                    </li>
+                    {["pricing_ent_feat1", "pricing_ent_feat2", "pricing_ent_feat3", "pricing_ent_feat4", "pricing_ent_feat5"].map((feat, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <CheckCircle2 className="text-[#FF4D00]" size={20} />
+                        <span className="text-[#D4D4D4]">{t(feat as any)}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <Button className="w-full" variant="outline" asChild>
+                  <Button className="w-full border-[#2A2A3A] text-[#D4D4D4] hover:bg-[#1A1A25]" variant="outline" asChild>
                     <a href="mailto:sales@madnesstools.com">
                       {t("pricing_ent_cta")}
                     </a>
@@ -350,18 +261,19 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
-          <div className="container text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">{t("cta_title")}</h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+        <section className="py-20 bg-gradient-to-br from-[#FF4D00]/10 via-[#0A0A0F] to-[#FF4D00]/5 relative overflow-hidden">
+          <SparkPattern />
+          <div className="container text-center relative">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#F5F5F5]">{t("cta_title")}</h2>
+            <p className="text-xl text-[#A3A3A3] mb-8 max-w-2xl mx-auto">
               {t("cta_subtitle")}
             </p>
-            <Button size="lg" asChild className="text-lg px-8">
+            <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500] text-white">
               <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
                 {t("cta_button")} <span className="ml-2">→</span>
               </a>
             </Button>
-            <p className="text-sm text-muted-foreground mt-4">{t("cta_note")}</p>
+            <p className="text-sm text-[#737373] mt-4">{t("cta_note")}</p>
           </div>
         </section>
       </main>

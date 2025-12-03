@@ -3,6 +3,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * MadnessBot Design System
+ * Brand Style Guide v1.0
+ * 
+ * Primary: #FF4D00 (Orange)
+ * Display Font: Zen Dots
+ * Body Font: IBM Plex Sans
+ * Mono Font: IBM Plex Mono
+ */
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -40,87 +50,154 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* MadnessBot Brand Colors */
+  --orange-500: #FF4D00;
+  --orange-400: #FF6B2E;
+  --orange-300: #FF8A5C;
+  --orange-600: #E64500;
+  --orange-700: #CC3D00;
+  --dark-950: #0A0A0F;
+  --dark-900: #111118;
+  --dark-800: #1A1A25;
+  --dark-700: #2A2A3A;
+  --dark-600: #3A3A4A;
+  --dark-500: #4A4A5A;
+  --light-50: #FAFAFA;
+  --light-100: #F5F5F5;
+  --light-200: #E8E8E8;
+  --light-300: #D4D4D4;
+  --light-400: #A3A3A3;
+  --light-500: #737373;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
+  
+  /* MadnessBot Typography */
+  --font-display: 'Zen Dots', cursive;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  
+  /* MadnessBot Spacing (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  
+  /* MadnessBot Effects */
+  --shadow-glow: 0 0 30px rgba(255, 77, 0, 0.3);
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  /* Light theme - keeping for completeness */
+  --primary: #FF4D00;
+  --primary-foreground: #FFFFFF;
+  --sidebar-primary: #E64500;
+  --sidebar-primary-foreground: #FFFFFF;
+  --chart-1: #FF8A5C;
+  --chart-2: #FF4D00;
+  --chart-3: #E64500;
+  --chart-4: #CC3D00;
+  --chart-5: #993000;
+  --radius: 0.75rem;
+  --background: #FAFAFA;
+  --foreground: #0A0A0F;
+  --card: #FFFFFF;
+  --card-foreground: #0A0A0F;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A0A0F;
+  --secondary: #F5F5F5;
+  --secondary-foreground: #2A2A3A;
+  --muted: #E8E8E8;
+  --muted-foreground: #737373;
+  --accent: #F5F5F5;
+  --accent-foreground: #0A0A0F;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8E8E8;
+  --input: #E8E8E8;
+  --ring: #FF4D00;
+  --sidebar: #F5F5F5;
+  --sidebar-foreground: #0A0A0F;
+  --sidebar-accent: #E8E8E8;
+  --sidebar-accent-foreground: #0A0A0F;
+  --sidebar-border: #E8E8E8;
+  --sidebar-ring: #FF4D00;
 }
 
 .dark {
-  /* Industrial dark theme with automotive orange accent */
-  --primary: oklch(0.65 0.19 35); /* Automotive orange */
-  --primary-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.65 0.19 35);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --background: oklch(0.12 0.01 250); /* Dark charcoal */
-  --foreground: oklch(0.92 0.01 250); /* Light gray text */
-  --card: oklch(0.18 0.015 250); /* Slightly lighter card */
-  --card-foreground: oklch(0.92 0.01 250);
-  --popover: oklch(0.18 0.015 250);
-  --popover-foreground: oklch(0.92 0.01 250);
-  --secondary: oklch(0.25 0.02 250); /* Steel gray */
-  --secondary-foreground: oklch(0.85 0.01 250);
-  --muted: oklch(0.22 0.015 250);
-  --muted-foreground: oklch(0.60 0.01 250);
-  --accent: oklch(0.65 0.19 35); /* Automotive orange accent */
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.55 0.22 25); /* Red */
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.30 0.02 250); /* Subtle borders */
-  --input: oklch(0.25 0.02 250);
-  --ring: oklch(0.65 0.19 35); /* Orange focus ring */
-  --chart-1: oklch(0.65 0.19 35);
-  --chart-2: oklch(0.55 0.15 220);
-  --chart-3: oklch(0.60 0.12 200);
-  --chart-4: oklch(0.50 0.10 240);
-  --chart-5: oklch(0.45 0.08 260);
-  --sidebar: oklch(0.18 0.015 250);
-  --sidebar-foreground: oklch(0.92 0.01 250);
-  --sidebar-accent: oklch(0.25 0.02 250);
-  --sidebar-accent-foreground: oklch(0.92 0.01 250);
-  --sidebar-border: oklch(0.30 0.02 250);
-  --sidebar-ring: oklch(0.65 0.19 35);
+  /* MadnessBot Dark Theme - Primary theme */
+  --primary: #FF4D00;
+  --primary-foreground: #FFFFFF;
+  --sidebar-primary: #FF4D00;
+  --sidebar-primary-foreground: #FFFFFF;
+  --background: #0A0A0F;
+  --foreground: #F5F5F5;
+  --card: #111118;
+  --card-foreground: #F5F5F5;
+  --popover: #111118;
+  --popover-foreground: #F5F5F5;
+  --secondary: #1A1A25;
+  --secondary-foreground: #D4D4D4;
+  --muted: #1A1A25;
+  --muted-foreground: #A3A3A3;
+  --accent: #1A1A25;
+  --accent-foreground: #F5F5F5;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #2A2A3A;
+  --input: #1A1A25;
+  --ring: #FF4D00;
+  --chart-1: #FF4D00;
+  --chart-2: #FF6B2E;
+  --chart-3: #22C55E;
+  --chart-4: #3B82F6;
+  --chart-5: #F59E0B;
+  --sidebar: #111118;
+  --sidebar-foreground: #F5F5F5;
+  --sidebar-accent: #1A1A25;
+  --sidebar-accent-foreground: #F5F5F5;
+  --sidebar-border: #2A2A3A;
+  --sidebar-ring: #FF4D00;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    line-height: 1.6;
   }
+  
+  /* Apply display font to headings */
+  h1, h2, h3, .font-display {
+    font-family: var(--font-body);
+    font-weight: 700;
+  }
+  
+  /* Monospace for code */
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+  
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -137,22 +214,12 @@
 @layer components {
   /**
    * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
    */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 
@@ -163,16 +230,76 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
+      padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      max-width: 1280px;
     }
+  }
+  
+  /* MadnessBot Brand Logo Text */
+  .brand-logo {
+    font-family: var(--font-display);
+    color: var(--orange-500);
+  }
+  
+  /* MadnessBot Primary Button Glow Effect */
+  .btn-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* MadnessBot Card Style */
+  .madness-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    transition: border-color var(--transition-fast);
+  }
+  
+  .madness-card:hover {
+    border-color: var(--dark-600);
+  }
+  
+  /* MadnessBot Tag Styles */
+  .tag {
+    display: inline-flex;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 500;
+    border-radius: 9999px;
+  }
+  
+  .tag-orange {
+    background: rgba(255, 77, 0, 0.15);
+    color: var(--orange-400);
+  }
+  
+  .tag-success {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--success);
+  }
+  
+  .tag-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+  }
+  
+  .tag-error {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--error);
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
