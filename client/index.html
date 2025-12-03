@@ -1,40 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <link
-      id="app-favicon"
-      rel="icon"
-      type="image/png"
-      href="https://placehold.co/128x128/E1E7EF/1F2937?text=App" />
-    <link
-      id="app-touch-icon"
-      rel="apple-touch-icon"
-      href="https://placehold.co/180x180/E1E7EF/1F2937?text=App" />
+    <!-- MadnessBot Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABUklEQVR4nO2WO07DQBCGP0hDQUFBRQEVJRUNNQ0lJQ0tDQ0NDQ0NDQ0NDQ0NDQ0NvQPukPAKfATiAk4E7ya7XjsJIpE8kvV4d/7/n52dXfgXvxWtwBFwCZwD24F2J8A1cAc8xThoBKjQM0TADjAFJMAtcAPcBxhRAA6ADWASGAPGgDkwDywCizEOKsBkYEIFOARqwCYwC8wAU8AEMAYMASXgAFgGtoAlYNY4uELhHHgCPoEP4B14A96AD+ANWA3MmQQSwCawAWwB88AG/zlwAhTw5B7QDQxCCTgBdoEk4CDk4AH4BH6AN+ADeAXegOfA+0ng0e+B++8v0gXwAnwBb8Ab8Aq8AC/AM/AMPAPPwDPwDDwDz8Az8Aw8A8/AM/AMPAPP/wPwBLwA30AfcA90A4PAALAGrAOrwAqwDCwBS8AisAAsAPP/BPgGxb5yXCrShL8AAAAASUVORK5CYII=" />
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEuklEQVR4nO3dW3LbMBAFUKf7X3O6gmQFyQqSFSQrSFaQrCBZQbKCZAXJCtIVJCtIV+CuINMPSRRFEiCA+zjzZSa2JYK4WCwWIPovAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBgDnQHU0w10BqinG+gMUE830BmijoPOAOo46Ayglt/oDKCOg84A6jjoDKCW3+gMoI6DzgDqOOgMoJbf6AygjoPOAOo46AygjoPOAGr5jc4A6jjoDKCOg84AavmNzgDqOOgMoI6DzgBq+Y3OAOo46AygjoO0A9f3Ap0Bavkd6AxQR4LOAGp4C3QGqKMb6AxQT4LOAGp5C3QGqKMb6AxQT4LOAGp5C3QGqKMb6AxQT4LOAGr5HegMUMdBZwC1HAc6A9TRDXQGqCfBJ0AtbQ50BqilG+gMUM9v9BdATb8DnQHq+B3oDFDLcaAzQB3dQGeAehJ8AtTSxn4K9J8A/Y+ENAD5J0D/Y9B7AvQ/AfonQP8z0L8E+p8A/ROgfwL0PwP9S6D/JdD/DOjTX/pY9C9B+j9B+qegT3/pY9G/BOmfgvQ/A/1LoP8l0P8M6NNf+lj0L0H6p0D/M9C/BPpfAv3PgD79pY9F/xKkfwrS/wz0L4H+l0D/M6BPf+lj0b8E6Z8C/c9A/xLo00n/lOgHnT8HAAAA2EL9J8E+wLJaL2AHuFX7EPsMW3rwYzr6/Z5u/ZPLZdZzZfYhLo8c4D0FnPRj8EmO/6N6h/E6j85/pWK8rP1IfZZj/XPlOYrVxvI7l/2mSvsQ0gAAYO5+wL8E6+Y+gHWSe+ADrJvcB1gnOQe+wLr5d+AL7IT/A5+A/wMfAAAAAAAAAH7AJ0D/M9C/BPpfAv3PgD79pY9F/xKkfwrS/wz0L4H+l0D/M6BPf+lj0b8E6Z8C/c9A/xLofwn0PwP69Jc+Fv1LkP4pSP8z0L8E+l8C/c+APv2lj0X/EqR/CtL/DPQvgf6XQP8zoE9/6WPRvwTpn4L0PwP9S6D/JdD/DOjTX/pY9C9B+qdA/zPQvwT6XwL9z4A+/aWPRf8SpH8K0v8M9C+B/pdA/zOgT3/pY9G/BOmfAvQ/A/1LoP8l0P8M6NNf+lj0L0H6p0D/M9C/BPpfAv3PgD79pY9F/xKkfwrS/wz0L4H+l0D/M6BPf+lj0b8E6Z8C/c9A/xLofwn0PwP69Jc+Fv1LkP4pSP8z0L8E+l8C/c+APv2lj0X/EqR/CtL/DPQvgf6XQP8zoE9/6WPRvwTpn4L0PwP9S6D/JdD/DOjTX/pY9C9B+qdA/zPQvwT6XwL9z4A+/aWPRf8SpH8K0v8M9C+B/pdA/zOgT3/pY9G/BOmfAvQ/A/1LoP8l0P8M6NNf+lj0LwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwb/4Aj/KKwG0jJ4cAAAAASUVORK5CYII=" />
     <title>MadnessBot - AI Master Mechanic Assistant</title>
     <meta name="description" content="MadnessBot - Your AI-powered Master Mechanic assistant. Get expert diagnostic guidance, real-time parts sourcing, and tool inventory management for automotive repair shops." />
     <meta name="keywords" content="automotive AI, mechanic assistant, diagnostic software, parts sourcing, tool inventory, auto repair, TSB search" />
 
-    <script>
-      (function () {
-        var appLogo = "%VITE_APP_LOGO%";
-        if (appLogo) {
-          var favicon = document.getElementById("app-favicon");
-          var touchIcon = document.getElementById("app-touch-icon");
-          if (favicon) favicon.setAttribute("href", appLogo);
-          if (touchIcon) touchIcon.setAttribute("href", appLogo);
-        }
-
-        var appTitle = "%VITE_APP_TITLE%";
-        if (appTitle) {
-          document.title = appTitle;
-        }
-      })();
-    </script>
     
     <!-- Google Fonts - MadnessBot Brand Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
