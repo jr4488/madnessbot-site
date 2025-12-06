@@ -63,7 +63,7 @@ export default function Support() {
               </Button>
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span style={{ fontFamily: "'Zen Dots', cursive", color: '#f72b2b' }}>MadnessBot</span> {t("support_title")}
+              <span style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>MadnessBot</span> {t("support_title")}
             </h1>
             <p className="text-xl text-muted-foreground">
               {t("support_subtitle")}
@@ -90,17 +90,31 @@ export default function Support() {
           </div>
         </section>
 
-        {/* Content Sections */}
+        {/* Content Sections - Light Mode for Bot Screenshots (per Style Guide v3) */}
         <section className="py-12">
           <div className="container max-w-4xl">
             <div className="space-y-8">
               {sections.map((section) => (
-                <Card key={section.id} id={section.id} className="scroll-mt-32">
+                <Card 
+                  key={section.id} 
+                  id={section.id} 
+                  className="scroll-mt-32 bg-[#FAFAFA] border-[#E8E8E8]"
+                >
                   <CardContent className="pt-6">
-                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-[#171717]">
                       {section.title}
                     </h2>
-                    <div className="prose prose-invert max-w-none">
+                    <div className="prose prose-gray max-w-none 
+                      prose-headings:text-[#171717] 
+                      prose-p:text-[#404040] 
+                      prose-strong:text-[#171717]
+                      prose-li:text-[#404040]
+                      prose-a:text-[#FF4D00] hover:prose-a:text-[#E64500]
+                      prose-code:bg-[#F5F5F5] prose-code:text-[#525252] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+                      prose-pre:bg-[#F5F5F5] prose-pre:text-[#525252]
+                      prose-blockquote:border-[#FF4D00] prose-blockquote:text-[#525252]
+                      prose-img:rounded-lg prose-img:border prose-img:border-[#E8E8E8]
+                    ">
                       <Streamdown>{section.content}</Streamdown>
                     </div>
                   </CardContent>
