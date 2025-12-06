@@ -6,27 +6,19 @@ import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CheckCircle2 } from "lucide-react";
 
-// MadnessBot Lightning Bolt SVG Component
-const LightningBolt = ({ className = "", size = 20 }: { className?: string; size?: number }) => (
+// MadnessBot M-Bolt Logo SVG Component
+const MBoltLogo = ({ className = "", size = 20 }: { className?: string; size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" fill="none" className={className}>
-    <path d="M58 10 L38 48 L52 48 L34 90 L66 46 L50 46 L70 10 Z" fill="currentColor"/>
-    <circle cx="74" cy="26" r="3" fill="currentColor" opacity="0.7"/>
-    <circle cx="26" cy="74" r="3" fill="currentColor" opacity="0.7"/>
+    <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="currentColor"/>
   </svg>
 );
 
-// Spark Pattern Background Component
-const SparkPattern = () => (
-  <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 350 120" fill="none" preserveAspectRatio="xMidYMid slice">
-    <circle cx="35" cy="20" r="18" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.4"/>
-    <circle cx="320" cy="100" r="15" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.4"/>
-    <path d="M175 2 L155 50 L168 50 L142 118 L188 58 L172 58 L205 2 Z" fill="#FF4D00" opacity="0.3"/>
-    <path d="M70 20 L58 50 L66 50 L50 90 L80 55 L70 55 L88 20 Z" fill="#FF4D00" opacity="0.15"/>
-    <path d="M280 28 L265 65 L276 65 L256 110 L295 72 L282 72 L305 28 Z" fill="#FF4D00" opacity="0.15"/>
-    <circle cx="212" cy="15" r="3.5" fill="#FF4D00" opacity="0.4"/>
-    <circle cx="225" cy="28" r="2.5" fill="#FF4D00" opacity="0.3"/>
-    <circle cx="137" cy="105" r="3.5" fill="#FF4D00" opacity="0.4"/>
-    <circle cx="125" cy="92" r="2.5" fill="#FF4D00" opacity="0.3"/>
+// Subtle background pattern - clean, no spark particles per style guide v3
+const BackgroundPattern = () => (
+  <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 400 200" fill="none" preserveAspectRatio="xMidYMid slice">
+    <circle cx="50" cy="30" r="20" stroke="currentColor" strokeWidth="1" fill="none"/>
+    <circle cx="350" cy="170" r="25" stroke="currentColor" strokeWidth="1" fill="none"/>
+    <circle cx="200" cy="100" r="40" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.5"/>
   </svg>
 );
 
@@ -42,7 +34,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#FF4D00]/5 via-background to-background" />
-          <SparkPattern />
+          <BackgroundPattern />
           <div className="container relative">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center mb-6">
               {t("hero_title_1")}
@@ -262,7 +254,7 @@ export default function Home() {
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-[#FF4D00]/10 via-[#0A0A0F] to-[#FF4D00]/5 relative overflow-hidden">
-          <SparkPattern />
+          <BackgroundPattern />
           <div className="container text-center relative">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#F5F5F5]">{t("cta_title")}</h2>
             <p className="text-xl text-[#A3A3A3] mb-8 max-w-2xl mx-auto">

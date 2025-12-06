@@ -34,10 +34,9 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center gap-3 cursor-pointer">
-              {/* MadnessBot Logo Icon */}
+              {/* MadnessBot M-Bolt Logo */}
               <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-                <rect x="5" y="5" width="90" height="90" rx="20" fill="#FF4D00"/>
-                <path d="M58 18 L42 46 L52 46 L38 82 L62 48 L50 48 L66 18 Z" fill="#fff"/>
+                <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="#FF4D00"/>
               </svg>
               <span className="text-xl font-bold" style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>
                 MadnessBot
