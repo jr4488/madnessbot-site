@@ -34,11 +34,13 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center gap-3 cursor-pointer">
-              {/* MadnessBot M-Bolt Logo */}
+              {/* MadnessBot M-Bolt Logo with sparks (32px+ per style guide v2) */}
               <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
                 <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="#FF4D00"/>
+                <circle cx="32" cy="18" r="4" fill="#FF4D00" opacity="0.85"/>
+                <circle cx="68" cy="18" r="4" fill="#FF4D00" opacity="0.85"/>
               </svg>
-              <span className="text-xl font-bold" style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>
+              <span className="text-xl font-bold text-[#F5F5F5]" style={{ fontFamily: "'Zen Dots', cursive" }}>
                 MadnessBot
               </span>
             </div>

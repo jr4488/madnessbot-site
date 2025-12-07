@@ -15,7 +15,7 @@ export default function Footer() {
               <svg width="24" height="24" viewBox="0 0 100 100" fill="none">
                 <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="#FF4D00"/>
               </svg>
-              <h3 className="text-xl font-bold" style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>
+              <h3 className="text-xl font-bold text-[#F5F5F5]" style={{ fontFamily: "'Zen Dots', cursive" }}>
                 MadnessBot
               </h3>
             </div>
