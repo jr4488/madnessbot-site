@@ -100,7 +100,12 @@ export default function Support() {
                     <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
                       {section.title}
                     </h2>
-                    <div className="prose prose-invert max-w-none">
+                    <div className="prose prose-invert max-w-none 
+                      [&_pre]:!bg-[#FAFAFA] [&_pre]:!text-[#171717]
+                      [&_code]:!bg-[#F5F5F5] [&_code]:!text-[#404040]
+                      [&_.sd-code-block]:!bg-[#FAFAFA]
+                      [&_.sd-code-block_code]:!text-[#171717]
+                    ">
                       <Streamdown>{section.content}</Streamdown>
                     </div>
                   </CardContent>
