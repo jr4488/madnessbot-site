@@ -63,7 +63,7 @@ export default function Support() {
               </Button>
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span style={{ fontFamily: "'Zen Dots', cursive", color: '#f72b2b' }}>MadnessBot</span> {t("support_title")}
+              <span style={{ fontFamily: "'Zen Dots', cursive", color: '#FF4D00' }}>MadnessBot</span> {t("support_title")}
             </h1>
             <p className="text-xl text-muted-foreground">
               {t("support_subtitle")}
