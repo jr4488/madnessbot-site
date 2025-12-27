@@ -102,7 +102,10 @@ export default function Support() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEO />
+      <SEO
+        title={`${t("support_title")} - MadnessBot`}
+        description={t("support_subtitle")}
+      />
       <Navigation />
 
       <main className="flex-1">
