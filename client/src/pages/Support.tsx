@@ -6,14 +6,33 @@ import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Streamdown } from "streamdown";
 import supportContentData from "@/lib/supportContent.json";
+
+// Helper to calculate sticky header height dynamically
+const getStickyHeaderHeight = () => {
+  // 1. Get main nav height (usually 64px)
+  const nav = document.querySelector('nav');
+  const navHeight = nav ? nav.getBoundingClientRect().height : 64;
+
+  // 2. Get TOC nav height using specific ID
+  const toc = document.getElementById('support-toc');
+  const tocHeight = toc ? toc.getBoundingClientRect().height : 0;
+
+  // 3. Calculate total offset assuming stacking behavior
+  // Force a minimum effective height for the TOC to prevent under-scrolling
+  const effectiveTocHeight = tocHeight > 60 ? tocHeight : 68;
+
+  const total = navHeight + effectiveTocHeight + 20;
+  // Enforce a strict minimum of 160px to guarantee visibility
+  return Math.max(total, 160);
+};
 
 export default function Support() {
   const { t, language } = useLanguage();
   const [activeSection, setActiveSection] = useState<string>("");
-  
+
   // Get sections based on current language
   const sections = supportContentData[language] || supportContentData.en;
 
@@ -24,34 +43,68 @@ export default function Support() {
     }
   }, [sections, activeSection]);
 
+
+
+
+
+  const scrollToSection = useCallback((sectionId: string) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const performScroll = (behavior: ScrollBehavior) => {
+        const offset = getStickyHeaderHeight();
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: behavior
+        });
+      };
+
+      // Perform initial scroll smoothly
+      performScroll("smooth");
+
+      // Perform correction scroll instantly after delay to snap to correct position
+      setTimeout(() => performScroll("auto"), 350);
+    }
+
+    // Update URL without triggering default browser scroll behavior
+    history.pushState(null, "", `#${sectionId}`);
+  }, []);
+
   useEffect(() => {
     // Handle hash navigation
     const hash = window.location.hash.slice(1);
     if (hash) {
-      setActiveSection(hash);
-      const element = document.getElementById(hash);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      }
+      setTimeout(() => {
+        scrollToSection(hash);
+      }, 100);
     }
-  }, []);
+  }, [scrollToSection]);
 
-  const scrollToSection = (sectionId: string) => {
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    window.location.hash = sectionId;
-  };
+  // Intercept anchor link clicks in content and route through scrollToSection
+  useEffect(() => {
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      if (anchor && anchor.hash && anchor.hash.startsWith('#')) {
+        const sectionId = anchor.hash.slice(1);
+        // Check if this section exists in our content
+        if (sections.some(s => s.id === sectionId)) {
+          e.preventDefault();
+          scrollToSection(sectionId);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, [sections, scrollToSection]);
 
   return (
     <div className="min-h-screen flex flex-col">
       <SEO />
       <Navigation />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-12 bg-gradient-to-b from-primary/5 to-background">
@@ -72,7 +125,7 @@ export default function Support() {
         </section>
 
         {/* Table of Contents Navigation */}
-        <section className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b border-border py-4">
+        <section id="support-toc" className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b border-border py-4">
           <div className="container">
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
               {sections.map((section) => (
