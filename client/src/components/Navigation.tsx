@@ -10,11 +10,6 @@ export default function Navigation() {
   const [location] = useLocation();
   const { t } = useLanguage();
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/support", label: t("nav_support") },
-  ];
-
   const scrollToSection = (sectionId: string) => {
     if (location !== "/") {
       window.location.href = `/#${sectionId}`;

@@ -43,6 +43,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/affiliates">
+                  <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
+                    {t("footer_link_affiliates")}
+                  </span>
+                </Link>
+              </li>
+              <li>
                 <a
                   href="https://madnesstools.com"
                   target="_blank"

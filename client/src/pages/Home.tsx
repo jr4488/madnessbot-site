@@ -5,20 +5,21 @@ import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CheckCircle2 } from "lucide-react";
+import { trackConversion } from "@/lib/analytics";
 
 // MadnessBot M-Bolt Logo SVG Component
 const MBoltLogo = ({ className = "", size = 20 }: { className?: string; size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" fill="none" className={className}>
-    <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="currentColor"/>
+    <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="currentColor" />
   </svg>
 );
 
 // Subtle background pattern - clean, no spark particles per style guide v3
 const BackgroundPattern = () => (
   <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 400 200" fill="none" preserveAspectRatio="xMidYMid slice">
-    <circle cx="50" cy="30" r="20" stroke="currentColor" strokeWidth="1" fill="none"/>
-    <circle cx="350" cy="170" r="25" stroke="currentColor" strokeWidth="1" fill="none"/>
-    <circle cx="200" cy="100" r="40" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.5"/>
+    <circle cx="50" cy="30" r="20" stroke="currentColor" strokeWidth="1" fill="none" />
+    <circle cx="350" cy="170" r="25" stroke="currentColor" strokeWidth="1" fill="none" />
+    <circle cx="200" cy="100" r="40" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.5" />
   </svg>
 );
 
@@ -48,7 +49,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500]">
-                <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
                   {t("hero_cta_primary")}
                 </a>
               </Button>
@@ -95,6 +96,7 @@ export default function Home() {
                       { title: "feat_memory_title", desc: "feat_memory_desc" },
                       { title: "feat_video_title", desc: "feat_video_desc" },
                       { title: "feat_image_title", desc: "feat_image_desc" },
+                      { title: "feat_growth_title", desc: "feat_growth_desc" },
                       { title: "feat_price_title", desc: "feat_price_desc" },
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
@@ -125,6 +127,7 @@ export default function Home() {
                       { title: "limit_memory_title", desc: "limit_memory_desc" },
                       { title: "limit_video_title", desc: "limit_video_desc" },
                       { title: "limit_image_title", desc: "limit_image_desc" },
+                      { title: "limit_growth_title", desc: "limit_growth_desc" },
                       { title: "limit_price_title", desc: "limit_price_desc" },
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
@@ -146,7 +149,7 @@ export default function Home() {
 
             <div className="flex justify-center mt-8">
               <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500]">
-                <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
                   {t("comp_cta")} <span className="ml-2">→</span>
                 </a>
               </Button>
@@ -183,7 +186,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <Button className="w-full border-[#2A2A3A] text-[#D4D4D4] hover:bg-[#1A1A25]" variant="outline" asChild>
-                    <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('purchaseDiy')}>
                       {t("pricing_diy_cta")}
                     </a>
                   </Button>
@@ -215,7 +218,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <Button className="w-full btn-glow bg-[#FF4D00] hover:bg-[#E64500] text-white" size="lg" asChild>
-                    <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('purchasePro')}>
                       {t("pricing_pro_cta")}
                     </a>
                   </Button>
@@ -242,7 +245,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <Button className="w-full border-[#2A2A3A] text-[#D4D4D4] hover:bg-[#1A1A25]" variant="outline" asChild>
-                    <a href="mailto:sales@madnesstools.com">
+                    <a href="mailto:sales@madnesstools.com" onClick={() => trackConversion('leadEnterprise')}>
                       {t("pricing_ent_cta")}
                     </a>
                   </Button>
@@ -261,7 +264,7 @@ export default function Home() {
               {t("cta_subtitle")}
             </p>
             <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500] text-white">
-              <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
                 {t("cta_button")} <span className="ml-2">→</span>
               </a>
             </Button>
