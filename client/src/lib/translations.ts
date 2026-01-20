@@ -184,9 +184,9 @@ export const translations = {
     aff_banners_square_desc: "Perfect for Instagram posts and social sharing",
     aff_banners_logos: "Logo Assets",
     aff_banners_logos_desc: "High-resolution logos for custom graphics",
-    aff_banners_dark: "Dark Theme",
-    aff_banners_light: "Light Theme",
-    aff_banners_orange: "Orange Gradient",
+    aff_banners_dark: "Bold Cameo",
+    aff_banners_light: "Subtle Texture",
+    aff_banners_orange: "Duotone Overlay",
     aff_banners_copy: "Copy Code",
     aff_banners_copied: "Copied!",
     aff_banners_download: "Download",
@@ -194,6 +194,10 @@ export const translations = {
     aff_banners_full_dark: "Full Logo (Dark BG)",
     aff_banners_full_light: "Full Logo (Light BG)",
     aff_banners_favicon: "Favicon",
+    aff_banner_headline: "Master Mechanic AI",
+    aff_banner_subline: "Parts • TSBs • Toolbox",
+    aff_banner_cta: "Try Free",
+    aff_banner_note: "7-day trial",
 
     // Social Media Tab
     aff_social_title: "Social Media Guidelines",
@@ -290,6 +294,15 @@ export const translations = {
     aff_cta_subtitle: "Join hundreds of affiliates already earning recurring commissions with MadnessBot. Sign up takes less than 2 minutes.",
     aff_cta_button: "Become an Affiliate",
     aff_cta_note: "Free to join • No approval required • Start earning today",
+
+    // Terms & Conditions
+    aff_terms_title: "Terms & Conditions",
+    aff_terms_intro: "Key rules for participation in the MadnessBot affiliate program:",
+    aff_terms_item_1: "You must use your unique referral link for all promotions.",
+    aff_terms_item_2: "Self-referrals and fraudulent signups are not eligible for commission.",
+    aff_terms_item_3: "Paid ads are allowed unless they bid on branded keywords or impersonate MadnessBot.",
+    aff_terms_item_4: "Commissions are paid on active, paying subscriptions only.",
+    aff_terms_item_5: "We reserve the right to withhold payouts for policy violations.",
 
     // FAQ Section
     aff_faq_title: "Frequently Asked Questions",
@@ -491,9 +504,9 @@ export const translations = {
     aff_banners_square_desc: "Perfecto para publicaciones de Instagram",
     aff_banners_logos: "Recursos de Logo",
     aff_banners_logos_desc: "Logos de alta resolución para gráficos personalizados",
-    aff_banners_dark: "Tema Oscuro",
-    aff_banners_light: "Tema Claro",
-    aff_banners_orange: "Gradiente Naranja",
+    aff_banners_dark: "Cameo Fuerte",
+    aff_banners_light: "Textura Sutil",
+    aff_banners_orange: "Duotono",
     aff_banners_copy: "Copiar Código",
     aff_banners_copied: "¡Copiado!",
     aff_banners_download: "Descargar",
@@ -501,6 +514,10 @@ export const translations = {
     aff_banners_full_dark: "Logo Completo (Fondo Oscuro)",
     aff_banners_full_light: "Logo Completo (Fondo Claro)",
     aff_banners_favicon: "Favicon",
+    aff_banner_headline: "IA Mecánico Maestro",
+    aff_banner_subline: "Piezas • TSB • Herramientas",
+    aff_banner_cta: "Probar Gratis",
+    aff_banner_note: "Prueba de 7 días",
 
     // Social Media Tab
     aff_social_title: "Guías de Redes Sociales",
@@ -597,6 +614,15 @@ export const translations = {
     aff_cta_subtitle: "Únete a cientos de afiliados que ya ganan comisiones recurrentes con MadnessBot. El registro toma menos de 2 minutos.",
     aff_cta_button: "Conviértete en Afiliado",
     aff_cta_note: "Gratis para unirse • Sin aprobación requerida • Empieza a ganar hoy",
+
+    // Terms & Conditions
+    aff_terms_title: "Términos y Condiciones",
+    aff_terms_intro: "Reglas clave para participar en el programa de afiliados de MadnessBot:",
+    aff_terms_item_1: "Debes usar tu enlace de referencia único en todas las promociones.",
+    aff_terms_item_2: "Las autorreferencias y registros fraudulentos no son elegibles para comisión.",
+    aff_terms_item_3: "La publicidad pagada está permitida siempre que no puje por palabras clave de marca ni se haga pasar por MadnessBot.",
+    aff_terms_item_4: "Las comisiones se pagan solo sobre suscripciones activas y de pago.",
+    aff_terms_item_5: "Nos reservamos el derecho de retener pagos por violaciones de políticas.",
 
     // FAQ Section
     aff_faq_title: "Preguntas Frecuentes",
@@ -798,9 +824,9 @@ export const translations = {
     aff_banners_square_desc: "Perfeito para posts do Instagram",
     aff_banners_logos: "Recursos de Logo",
     aff_banners_logos_desc: "Logos de alta resolução para gráficos personalizados",
-    aff_banners_dark: "Tema Escuro",
-    aff_banners_light: "Tema Claro",
-    aff_banners_orange: "Gradiente Laranja",
+    aff_banners_dark: "Cameo Forte",
+    aff_banners_light: "Textura Sutil",
+    aff_banners_orange: "Duotone",
     aff_banners_copy: "Copiar Código",
     aff_banners_copied: "Copiado!",
     aff_banners_download: "Baixar",
@@ -808,6 +834,10 @@ export const translations = {
     aff_banners_full_dark: "Logo Completo (Fundo Escuro)",
     aff_banners_full_light: "Logo Completo (Fundo Claro)",
     aff_banners_favicon: "Favicon",
+    aff_banner_headline: "IA Mecânico Mestre",
+    aff_banner_subline: "Peças • TSBs • Ferramentas",
+    aff_banner_cta: "Teste Grátis",
+    aff_banner_note: "Teste de 7 dias",
 
     // Social Media Tab
     aff_social_title: "Guias de Redes Sociais",
@@ -904,6 +934,15 @@ export const translations = {
     aff_cta_subtitle: "Junte-se a centenas de afiliados que já ganham comissões recorrentes com o MadnessBot. O cadastro leva menos de 2 minutos.",
     aff_cta_button: "Torne-se um Afiliado",
     aff_cta_note: "Grátis para entrar • Sem aprovação necessária • Comece a ganhar hoje",
+
+    // Terms & Conditions
+    aff_terms_title: "Termos e Condições",
+    aff_terms_intro: "Regras principais para participar do programa de afiliados do MadnessBot:",
+    aff_terms_item_1: "Você deve usar seu link de indicação exclusivo em todas as promoções.",
+    aff_terms_item_2: "Autoindicações e cadastros fraudulentos não são elegíveis para comissão.",
+    aff_terms_item_3: "Anúncios pagos são permitidos desde que não disputem palavras-chave da marca ou se passem por MadnessBot.",
+    aff_terms_item_4: "As comissões são pagas apenas sobre assinaturas ativas e pagas.",
+    aff_terms_item_5: "Reservamo-nos o direito de reter pagamentos por violações de política.",
 
     // FAQ Section
     aff_faq_title: "Perguntas Frequentes",

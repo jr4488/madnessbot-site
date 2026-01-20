@@ -26,55 +26,119 @@ import {
   Shield
 } from "lucide-react";
 import { Link } from "wouter";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 
 // MadnessBot M-Bolt Logo SVG Component
-const MBoltLogo = ({ className = "", size = 100 }: { className?: string; size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" className={className}>
+const MBoltLogo = ({
+  className = "",
+  size = 100,
+  sparks = true,
+  style,
+}: {
+  className?: string;
+  size?: number;
+  sparks?: boolean;
+  style?: CSSProperties;
+}) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" className={className} style={style}>
     <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="currentColor" />
+    {sparks && (
+      <>
+        <circle cx="32" cy="18" r="4" fill="currentColor" opacity="0.85" />
+        <circle cx="68" cy="18" r="4" fill="currentColor" opacity="0.85" />
+        <circle cx="50" cy="8" r="3" fill="currentColor" opacity="0.7" />
+      </>
+    )}
   </svg>
 );
 
+const downloadSvg = (filename: string, svg: string) => {
+  const blob = new Blob([svg], { type: "image/svg+xml" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+};
+
 // Banner Preview Component
-const BannerPreview = ({ 
-  width, 
-  height, 
-  variant, 
+const BannerPreview = ({
+  width,
+  height,
+  variant,
+  portraitStyle,
   label,
   copyText,
   copiedText,
-  downloadText
-}: { 
-  width: number; 
-  height: number; 
-  variant: 'dark' | 'light' | 'orange';
+  downloadText,
+}: {
+  width: number;
+  height: number;
+  variant: "dark" | "light" | "orange";
+  portraitStyle: "cameo" | "texture" | "duotone";
   label: string;
   copyText: string;
   copiedText: string;
   downloadText: string;
 }) => {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
+  const portraitSrc = "/affiliate-portrait.png";
+  const bannerAssetUrl = `https://madnesstools.com/banners/madnessbot-${width}x${height}-${variant}.png`;
   
-  const bgColors = {
-    dark: 'bg-[#0A0A0F]',
-    light: 'bg-[#F5F5F5]',
-    orange: 'bg-gradient-to-r from-[#FF4D00] to-[#E64500]'
-  };
-  
-  const textColors = {
-    dark: 'text-[#F5F5F5]',
-    light: 'text-[#0A0A0F]',
-    orange: 'text-white'
+  const tokens = {
+    dark: {
+      baseGradient:
+        "linear-gradient(135deg, #0A0A0F 0%, #111118 55%, #1A1A25 100%)",
+      accent: "#FF4D00",
+      text: "#F5F5F5",
+      muted: "#A3A3A3",
+      grid: "rgba(255,255,255,0.08)",
+      ctaText: "#0A0A0F",
+    },
+    light: {
+      baseGradient:
+        "linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 55%, #E8E8E8 100%)",
+      accent: "#FF4D00",
+      text: "#0A0A0F",
+      muted: "#4A4A5A",
+      grid: "rgba(0,0,0,0.08)",
+      ctaText: "#0A0A0F",
+    },
+    orange: {
+      baseGradient:
+        "linear-gradient(135deg, #FF4D00 0%, #E64500 50%, #CC3D00 100%)",
+      accent: "#0A0A0F",
+      text: "#FFFFFF",
+      muted: "rgba(255,255,255,0.85)",
+      grid: "rgba(255,255,255,0.25)",
+      ctaText: "#FFFFFF",
+    },
   };
 
-  const logoColors = {
-    dark: 'text-[#FF4D00]',
-    light: 'text-[#FF4D00]',
-    orange: 'text-white'
-  };
+  const styles = tokens[variant];
 
+  const previewWidth = Math.min(width, 320);
+  const previewHeight = Math.min(height, 250);
   const isVertical = height > width;
-  const isSmall = width <= 300;
+  const isSquare = Math.abs(width - height) < 2;
+  const isShort = previewHeight <= 110;
+  const scale = Math.min(previewWidth / 320, previewHeight / 250);
+  const padding = isShort ? "p-3" : "p-4";
+  const logoSize = Math.max(16, Math.round((isShort ? 18 : 24) * scale));
+  const headlineFontSize = Math.max(
+    10,
+    Math.round((isShort ? 11 : isVertical ? 14 : 15) * scale)
+  );
+  const sublineFontSize = Math.max(8, Math.round((isShort ? 8 : 9) * scale));
+  const ctaFontSize = Math.max(8, Math.round((isShort ? 8 : 9) * scale));
+  const noteFontSize = Math.max(7, Math.round((isShort ? 7 : 8) * scale));
+  const textMaxWidth = isVertical
+    ? "100%"
+    : `${Math.round(previewWidth * (isSquare ? 0.36 : 0.42))}px`;
   
   const handleCopyCode = () => {
     const code = `<a href="https://madnesstools.com?via=YOUR_AFFILIATE_ID" target="_blank" rel="noopener">
@@ -87,26 +151,214 @@ const BannerPreview = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(bannerAssetUrl, { mode: "cors" });
+      if (!response.ok) {
+        throw new Error("Banner asset not available");
+      }
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `madnessbot-${width}x${height}-${variant}.png`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      window.open(bannerAssetUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <div className="space-y-3">
       <div className="text-sm text-muted-foreground">{label} ({width}×{height})</div>
       <div 
-        className={`${bgColors[variant]} ${textColors[variant]} rounded-lg overflow-hidden flex items-center justify-center border border-border`}
+        className="rounded-lg overflow-hidden border border-border relative"
         style={{ 
-          width: Math.min(width, 320), 
-          height: Math.min(height, 250),
+          width: previewWidth, 
+          height: previewHeight,
           aspectRatio: `${width}/${height}`
         }}
       >
-        <div className={`flex ${isVertical ? 'flex-col' : 'flex-row'} items-center gap-2 p-3`}>
-          <MBoltLogo size={isSmall ? 24 : 32} className={logoColors[variant]} />
-          <div className={`${isVertical ? 'text-center' : 'text-left'}`}>
-            <div className={`font-bold ${isSmall ? 'text-xs' : 'text-sm'}`} style={{ fontFamily: "'Zen Dots', cursive" }}>
+        <div
+          className="absolute inset-0"
+          style={{ backgroundImage: styles.baseGradient }}
+        />
+        {portraitSrc && portraitStyle === "texture" && (
+          <img
+            src={portraitSrc}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+            style={{
+              opacity: 0.35,
+              filter: "grayscale(1) contrast(1.15) brightness(1.05)",
+              mixBlendMode: "overlay",
+            }}
+          />
+        )}
+        {portraitSrc && portraitStyle === "duotone" && (
+          <>
+            <img
+              src={portraitSrc}
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+              style={{
+                opacity: 0.65,
+                filter: "grayscale(1) contrast(1.25)",
+                mixBlendMode: "luminosity",
+              }}
+            />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `linear-gradient(120deg, ${styles.accent} 0%, ${styles.accent}99 45%, transparent 100%)`,
+                mixBlendMode: "color",
+                opacity: 0.55,
+              }}
+            />
+          </>
+        )}
+        {portraitSrc && portraitStyle === "cameo" && (
+          <img
+            src={portraitSrc}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="absolute h-[125%] w-auto max-w-none object-cover pointer-events-none"
+            style={{
+              right: isVertical ? "-8%" : "-4%",
+              top: isVertical ? "-10%" : "-18%",
+              opacity: 0.85,
+              filter: "contrast(1.1) saturate(0.9)",
+              maskImage: "linear-gradient(270deg, black 0%, black 45%, transparent 75%)",
+              WebkitMaskImage:
+                "linear-gradient(270deg, black 0%, black 45%, transparent 75%)",
+            }}
+          />
+        )}
+        <div
+          className="absolute inset-0 opacity-50"
+          style={{
+            backgroundImage: `repeating-linear-gradient(135deg, ${styles.grid} 0px, ${styles.grid} 1px, transparent 1px, transparent 6px)`,
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-25"
+          style={{
+            backgroundImage: `linear-gradient(${styles.grid} 1px, transparent 1px), linear-gradient(90deg, ${styles.grid} 1px, transparent 1px)`,
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <div
+          className="absolute -right-6 -top-6 w-20 h-20 border"
+          style={{
+            borderColor: styles.accent,
+            opacity: 0.35,
+            transform: "rotate(12deg)",
+          }}
+        />
+        <div
+          className="absolute right-0 top-0 h-full w-24"
+          style={{
+            backgroundImage: `linear-gradient(90deg, transparent, ${styles.accent}33)`,
+          }}
+        />
+        <div
+          className={`relative z-10 flex h-full w-full ${padding} ${
+            isVertical
+              ? "flex-col items-start justify-between"
+              : "flex-row items-center justify-between"
+          }`}
+        >
+          <div className={`flex items-center ${isShort ? "gap-2" : "gap-4"}`}>
+            <MBoltLogo
+              size={logoSize}
+              className="text-current"
+              sparks={logoSize >= 32}
+              style={{ color: styles.accent }}
+            />
+            <span
+              className="font-semibold"
+              style={{
+                color: styles.text,
+                fontFamily: "'Zen Dots', cursive",
+                letterSpacing: "0.04em",
+                fontSize: `${Math.max(10, Math.round(10 * scale))}px`,
+              }}
+            >
               MadnessBot
+            </span>
+          </div>
+
+          <div
+            className={`${
+              isVertical ? "mt-3" : "mx-4 flex-1"
+            } flex min-w-0 flex-col gap-1`}
+            style={{ maxWidth: textMaxWidth }}
+          >
+            <div
+              className="font-semibold leading-tight"
+              style={{
+                fontFamily: "'Zen Dots', cursive",
+                color: styles.text,
+                fontSize: `${headlineFontSize}px`,
+                letterSpacing: "0.05em",
+              }}
+            >
+              {t("aff_banner_headline")}
             </div>
-            <div className={`${isSmall ? 'text-[10px]' : 'text-xs'} opacity-80`}>
-              AI Master Mechanic
+            <div
+              className="uppercase"
+              style={{
+                color: styles.muted,
+                fontSize: `${sublineFontSize}px`,
+                letterSpacing: "0.2em",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+              }}
+            >
+              {t("aff_banner_subline")}
             </div>
+          </div>
+
+          <div
+            className={`${
+              isVertical ? "mt-3" : isShort ? "ml-1" : "ml-2"
+            } flex flex-col items-start gap-1 flex-shrink-0`}
+            style={{ marginTop: isVertical ? Math.max(6, Math.round(6 * scale)) : undefined }}
+          >
+            <span
+              className={`rounded-full border font-semibold uppercase ${
+                isShort ? "px-2 py-0.5" : "px-3 py-1"
+              }`}
+              style={{
+                borderColor: `${styles.accent}99`,
+                backgroundColor: styles.accent,
+                color: styles.ctaText,
+                fontSize: `${ctaFontSize}px`,
+                letterSpacing: "0.18em",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+                lineHeight: 1,
+              }}
+            >
+              {t("aff_banner_cta")}
+            </span>
+            <span
+              className="uppercase"
+              style={{
+                color: styles.muted,
+                fontSize: `${noteFontSize}px`,
+                letterSpacing: "0.2em",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+              }}
+            >
+              {t("aff_banner_note")}
+            </span>
           </div>
         </div>
       </div>
@@ -115,7 +367,7 @@ const BannerPreview = ({
           {copied ? <CheckCircle2 size={14} className="mr-1" /> : <Copy size={14} className="mr-1" />}
           {copied ? copiedText : copyText}
         </Button>
-        <Button size="sm" variant="outline" className="text-xs">
+        <Button size="sm" variant="outline" className="text-xs" onClick={handleDownload}>
           <Download size={14} className="mr-1" />
           {downloadText}
         </Button>
@@ -162,6 +414,39 @@ const SocialCard = ({
 export default function Affiliates() {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState("overview");
+
+  const iconSvg = `<svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="#FF4D00"/>
+  <circle cx="32" cy="18" r="4" fill="#FF4D00" opacity="0.85"/>
+  <circle cx="68" cy="18" r="4" fill="#FF4D00" opacity="0.85"/>
+  <circle cx="50" cy="8" r="3" fill="#FF4D00" opacity="0.7"/>
+  </svg>`;
+  const fullLogoDarkSvg = `<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="120" fill="#0A0A0F"/>
+  <g transform="translate(24,20)">
+    <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="#FF4D00"/>
+    <circle cx="32" cy="18" r="4" fill="#FF4D00" opacity="0.85"/>
+    <circle cx="68" cy="18" r="4" fill="#FF4D00" opacity="0.85"/>
+    <circle cx="50" cy="8" r="3" fill="#FF4D00" opacity="0.7"/>
+  </g>
+  <text x="130" y="76" font-family="Zen Dots, cursive" font-size="34" fill="#F5F5F5">MadnessBot</text>
+  </svg>`;
+  const fullLogoLightSvg = `<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="120" fill="#F5F5F5"/>
+  <g transform="translate(24,20)">
+    <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="#FF4D00"/>
+    <circle cx="32" cy="18" r="4" fill="#FF4D00" opacity="0.85"/>
+    <circle cx="68" cy="18" r="4" fill="#FF4D00" opacity="0.85"/>
+    <circle cx="50" cy="8" r="3" fill="#FF4D00" opacity="0.7"/>
+  </g>
+  <text x="130" y="76" font-family="Zen Dots, cursive" font-size="34" fill="#0A0A0F">MadnessBot</text>
+  </svg>`;
+  const faviconSvg = `<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="24" fill="#FF4D00"/>
+  <g transform="translate(12,16) scale(0.75)">
+    <path d="M5 92 L5 25 L18 25 L18 55 L32 25 L50 70 L68 25 L82 25 L82 55 L95 25 L95 92 L75 92 L75 50 L60 85 L50 60 L40 85 L25 50 L25 92 Z" fill="#FFFFFF"/>
+  </g>
+  </svg>`;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -412,9 +697,9 @@ export default function Affiliates() {
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-3 gap-8">
-                      <BannerPreview width={728} height={90} variant="dark" label={t("aff_banners_dark")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
-                      <BannerPreview width={728} height={90} variant="light" label={t("aff_banners_light")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
-                      <BannerPreview width={728} height={90} variant="orange" label={t("aff_banners_orange")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={728} height={90} variant="dark" portraitStyle="cameo" label={t("aff_banners_dark")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={728} height={90} variant="light" portraitStyle="texture" label={t("aff_banners_light")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={728} height={90} variant="orange" portraitStyle="duotone" label={t("aff_banners_orange")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
                     </div>
                   </CardContent>
                 </Card>
@@ -427,9 +712,9 @@ export default function Affiliates() {
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-3 gap-8">
-                      <BannerPreview width={300} height={250} variant="dark" label={t("aff_banners_dark")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
-                      <BannerPreview width={300} height={250} variant="light" label={t("aff_banners_light")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
-                      <BannerPreview width={300} height={250} variant="orange" label={t("aff_banners_orange")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={300} height={250} variant="dark" portraitStyle="cameo" label={t("aff_banners_dark")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={300} height={250} variant="light" portraitStyle="texture" label={t("aff_banners_light")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={300} height={250} variant="orange" portraitStyle="duotone" label={t("aff_banners_orange")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
                     </div>
                   </CardContent>
                 </Card>
@@ -442,9 +727,9 @@ export default function Affiliates() {
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-3 gap-8">
-                      <BannerPreview width={160} height={600} variant="dark" label={t("aff_banners_dark")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
-                      <BannerPreview width={160} height={600} variant="light" label={t("aff_banners_light")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
-                      <BannerPreview width={160} height={600} variant="orange" label={t("aff_banners_orange")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={160} height={600} variant="dark" portraitStyle="cameo" label={t("aff_banners_dark")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={160} height={600} variant="light" portraitStyle="texture" label={t("aff_banners_light")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={160} height={600} variant="orange" portraitStyle="duotone" label={t("aff_banners_orange")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
                     </div>
                   </CardContent>
                 </Card>
@@ -457,9 +742,9 @@ export default function Affiliates() {
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-3 gap-8">
-                      <BannerPreview width={1080} height={1080} variant="dark" label={t("aff_banners_dark")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
-                      <BannerPreview width={1080} height={1080} variant="light" label={t("aff_banners_light")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
-                      <BannerPreview width={1080} height={1080} variant="orange" label={t("aff_banners_orange")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={1080} height={1080} variant="dark" portraitStyle="cameo" label={t("aff_banners_dark")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={1080} height={1080} variant="light" portraitStyle="texture" label={t("aff_banners_light")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
+                      <BannerPreview width={1080} height={1080} variant="orange" portraitStyle="duotone" label={t("aff_banners_orange")} copyText={t("aff_banners_copy")} copiedText={t("aff_banners_copied")} downloadText={t("aff_banners_download")} />
                     </div>
                   </CardContent>
                 </Card>
@@ -478,7 +763,12 @@ export default function Affiliates() {
                           <div className="font-medium">{t("aff_banners_icon")}</div>
                           <div className="text-[#737373]">SVG / PNG</div>
                         </div>
-                        <Button size="sm" variant="outline" className="w-full">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-full"
+                          onClick={() => downloadSvg("madnessbot-mbolt-icon.svg", iconSvg)}
+                        >
                           <Download size={14} className="mr-1" /> {t("aff_banners_download")}
                         </Button>
                       </div>
@@ -491,7 +781,12 @@ export default function Affiliates() {
                           <div className="font-medium">{t("aff_banners_full_dark")}</div>
                           <div className="text-[#737373]">SVG / PNG</div>
                         </div>
-                        <Button size="sm" variant="outline" className="w-full">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-full"
+                          onClick={() => downloadSvg("madnessbot-full-dark.svg", fullLogoDarkSvg)}
+                        >
                           <Download size={14} className="mr-1" /> {t("aff_banners_download")}
                         </Button>
                       </div>
@@ -504,7 +799,12 @@ export default function Affiliates() {
                           <div className="font-medium">{t("aff_banners_full_light")}</div>
                           <div className="text-[#737373]">SVG / PNG</div>
                         </div>
-                        <Button size="sm" variant="outline" className="w-full border-[#2A2A3A]">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-full border-[#2A2A3A]"
+                          onClick={() => downloadSvg("madnessbot-full-light.svg", fullLogoLightSvg)}
+                        >
                           <Download size={14} className="mr-1" /> {t("aff_banners_download")}
                         </Button>
                       </div>
@@ -514,7 +814,12 @@ export default function Affiliates() {
                           <div className="font-medium">{t("aff_banners_favicon")}</div>
                           <div className="text-[#737373]">ICO / PNG</div>
                         </div>
-                        <Button size="sm" variant="outline" className="w-full">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-full"
+                          onClick={() => downloadSvg("madnessbot-favicon.svg", faviconSvg)}
+                        >
                           <Download size={14} className="mr-1" /> {t("aff_banners_download")}
                         </Button>
                       </div>
@@ -820,6 +1125,25 @@ export default function Affiliates() {
               </a>
             </Button>
             <p className="text-sm text-[#737373] mt-4">{t("aff_cta_note")}</p>
+          </div>
+        </section>
+
+        {/* Terms & Conditions */}
+        <section className="py-20 bg-[#111118]">
+          <div className="container max-w-4xl">
+            <h2 className="text-3xl font-bold text-center mb-8">
+              {t("aff_terms_title")}
+            </h2>
+            <div className="rounded-xl border border-[#2A2A3A] bg-[#0A0A0F] p-6 md:p-8">
+              <p className="text-[#A3A3A3] mb-6">{t("aff_terms_intro")}</p>
+              <ul className="space-y-3 text-sm text-[#D4D4D4]">
+                <li>• {t("aff_terms_item_1")}</li>
+                <li>• {t("aff_terms_item_2")}</li>
+                <li>• {t("aff_terms_item_3")}</li>
+                <li>• {t("aff_terms_item_4")}</li>
+                <li>• {t("aff_terms_item_5")}</li>
+              </ul>
+            </div>
           </div>
         </section>
 
