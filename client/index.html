@@ -38,22 +38,6 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      (function () {
-        var analyticsEndpoint = "%VITE_ANALYTICS_ENDPOINT%";
-        var analyticsWebsiteId = "%VITE_ANALYTICS_WEBSITE_ID%";
-
-        if (!analyticsEndpoint || !analyticsWebsiteId) {
-          return;
-        }
-
-        var script = document.createElement("script");
-        script.defer = true;
-        script.src = analyticsEndpoint.replace(/\/$/, "") + "/umami";
-        script.setAttribute("data-website-id", analyticsWebsiteId);
-        document.body.appendChild(script);
-      })();
-    </script>
   </body>
 
 </html>

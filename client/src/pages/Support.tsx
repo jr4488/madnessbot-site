@@ -9,6 +9,7 @@ import { Link } from "wouter";
 import { useState, useEffect, useCallback } from "react";
 import { Streamdown } from "streamdown";
 import supportContentData from "@/lib/supportContent.json";
+import { updateHashHistory, type HashHistoryMode } from "@/lib/hashNavigation";
 
 // Helper to calculate sticky header height dynamically
 const getStickyHeaderHeight = () => {
@@ -43,43 +44,85 @@ export default function Support() {
     }
   }, [sections, activeSection]);
 
+  type ScrollToSectionOptions = {
+    behavior?: ScrollBehavior;
+    historyMode?: HashHistoryMode;
+  };
 
+  const scrollToSection = useCallback(
+    (sectionId: string, options: ScrollToSectionOptions = {}) => {
+      const element = document.getElementById(sectionId);
+      if (!element) {
+        return;
+      }
 
+      setActiveSection(sectionId);
 
-
-  const scrollToSection = useCallback((sectionId: string) => {
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const performScroll = (behavior: ScrollBehavior) => {
+      const { behavior = "smooth", historyMode = "push" } = options;
+      const performScroll = (scrollBehavior: ScrollBehavior) => {
         const offset = getStickyHeaderHeight();
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
           top: elementPosition - offset,
-          behavior: behavior
+          behavior: scrollBehavior,
         });
       };
 
       // Perform initial scroll smoothly
-      performScroll("smooth");
+      performScroll(behavior);
 
       // Perform correction scroll instantly after delay to snap to correct position
       setTimeout(() => performScroll("auto"), 350);
-    }
 
-    // Update URL without triggering default browser scroll behavior
-    history.pushState(null, "", `#${sectionId}`);
-  }, []);
+      // Update URL without triggering default browser scroll behavior
+      updateHashHistory(sectionId, historyMode);
+    },
+    []
+  );
+
+  const scrollToHash = useCallback(
+    (hash: string, options: ScrollToSectionOptions = {}) => {
+      const raw = hash.startsWith("#") ? hash.slice(1) : hash;
+      if (!raw) {
+        return;
+      }
+
+      let sectionId = raw;
+      try {
+        sectionId = decodeURIComponent(raw);
+      } catch {
+        sectionId = raw;
+      }
+
+      let attempts = 0;
+      const maxAttempts = 8;
+      const tryScroll = () => {
+        if (document.getElementById(sectionId)) {
+          scrollToSection(sectionId, options);
+          return;
+        }
+
+        if (attempts < maxAttempts) {
+          attempts += 1;
+          requestAnimationFrame(tryScroll);
+        }
+      };
+
+      tryScroll();
+    },
+    [scrollToSection]
+  );
 
   useEffect(() => {
     // Handle hash navigation
-    const hash = window.location.hash.slice(1);
+    const hash = window.location.hash;
     if (hash) {
       setTimeout(() => {
-        scrollToSection(hash);
+        scrollToHash(hash, { historyMode: "replace", behavior: "auto" });
       }, 100);
     }
-  }, [scrollToSection]);
+  }, [scrollToHash]);
 
   // Intercept anchor link clicks in content and route through scrollToSection
   useEffect(() => {
@@ -91,14 +134,31 @@ export default function Support() {
         // Check if this section exists in our content
         if (sections.some(s => s.id === sectionId)) {
           e.preventDefault();
-          scrollToSection(sectionId);
+          scrollToHash(anchor.hash);
         }
       }
     };
 
     document.addEventListener('click', handleAnchorClick);
     return () => document.removeEventListener('click', handleAnchorClick);
-  }, [sections, scrollToSection]);
+  }, [sections, scrollToHash]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (!hash) {
+        return;
+      }
+      scrollToHash(hash, { historyMode: "replace", behavior: "auto" });
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("popstate", handleHashChange);
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("popstate", handleHashChange);
+    };
+  }, [scrollToHash]);
 
   return (
     <div className="min-h-screen flex flex-col">
