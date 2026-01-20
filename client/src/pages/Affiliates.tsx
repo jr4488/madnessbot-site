@@ -626,10 +626,10 @@ export default function Affiliates() {
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        "#MadnessBot", "#AIMechanic", "#MechanicLife", "#AutomotiveTech",
-                        "#ToolTok", "#MechanicTikTok", "#AutoRepair", "#DiagnosticTools",
-                        "#ShopLife", "#SnapOnAlternative", "#MechanicHumor", "#CarRepair",
-                        "#AutomotiveAI", "#TechnicianLife", "#GarageLife", "#WorkSmarter"
+                        "#MadnessBot", "#AIMechanic", "#AutomotiveTech", "#AutoRepair",
+                        "#DiagnosticTools", "#CarRepair", "#AutomotiveAI", "#Gearhead",
+                        "#WrenchLife", "#AutoTech", "#PerformanceUpgrade", "#Horsepower",
+                        "#CarRestoration", "#ClassicCars", "#ProjectCar", "#Restomod"
                       ].map((tag, index) => (
                         <span key={index} className="px-3 py-1 rounded-full bg-[#1A1A25] border border-[#2A2A3A] text-sm text-[#A3A3A3]">
                           {tag}

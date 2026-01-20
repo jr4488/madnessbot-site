@@ -11,10 +11,10 @@ export const translations = {
     hero_title_1: "Your Shop's ",
     hero_title_2: "Master Mechanic",
     hero_title_3: ", Available 24/7",
-    hero_subtitle: "MAD-6.2 powered diagnostic guidance, real-time parts sourcing, deep research growth reports, and intelligent toolbox management for automotive professionals.",
+    hero_subtitle: "AI powered diagnostic guidance, real-time parts sourcing, deep research growth reports, and intelligent toolbox management for automotive professionals.",
     hero_cta_primary: "Try MadnessBot Now",
     hero_cta_secondary: "Learn More",
-    hero_note: "100 free queries • No credit card required • Full feature access",
+    hero_note: "7-day free trial • No credit card required • Full feature access",
 
     // Comparison Section
     comp_title: "vs ChatGPT",
@@ -42,7 +42,7 @@ export const translations = {
     feat_growth_title: "Deep Research Growth Reports",
     feat_growth_desc: "AI-powered competitive analysis with 30/60/90-day growth plans for your shop",
     feat_price_title: "Affordable Pricing",
-    feat_price_desc: "$19.99/month - cheaper than AllData, Mitchell1 and ChatGPT",
+    feat_price_desc: "Starting at $19.99/month - cheaper than AllData, Mitchell1 and ChatGPT",
 
     // ChatGPT Limitations
     limit_parts_title: "No Parts Integration",
@@ -108,7 +108,7 @@ export const translations = {
     cta_title: "Ready to Transform Your Shop?",
     cta_subtitle: "Join thousands of automotive professionals using MadnessBot to diagnose faster, fix smarter, and grow their business.",
     cta_button: "Try MadnessBot Free",
-    cta_note: "No credit card required • 100 free queries • Cancel anytime",
+    cta_note: "No credit card required • 7-day free trial • Cancel anytime",
 
     // Footer
     footer_desc: "Your AI-powered Master Mechanic assistant. Available 24/7 for automotive diagnostics, parts sourcing, and tool management.",
@@ -205,7 +205,7 @@ export const translations = {
     aff_social_youtube_tip3: "Demonstrate real diagnostic scenarios mechanics face daily",
     aff_social_youtube_tip4: "Show the toolbox inventory feature—it's a game-changer",
     aff_social_youtube_tip5: "Add a pinned comment with your affiliate link",
-    aff_social_youtube_tip6: "Mention the 100 free queries trial—no credit card required",
+    aff_social_youtube_tip6: "Mention the 7-day free trial—no credit card required",
     aff_social_instagram: "Instagram",
     aff_social_instagram_desc: "Great for visual content, Stories, and Reels",
     aff_social_instagram_tip1: "Use Stories to show quick MadnessBot wins (15-30 sec clips)",
@@ -318,10 +318,10 @@ export const translations = {
     hero_title_1: "El ",
     hero_title_2: "Mecánico Maestro",
     hero_title_3: " de Tu Taller, Disponible 24/7",
-    hero_subtitle: "Orientación diagnóstica con MAD-6.2, búsqueda de piezas en tiempo real, informes de crecimiento con investigación profunda, y gestión inteligente de caja de herramientas para profesionales automotrices.",
+    hero_subtitle: "Orientación diagnóstica con IA, búsqueda de piezas en tiempo real, informes de crecimiento con investigación profunda, y gestión inteligente de caja de herramientas para profesionales automotrices.",
     hero_cta_primary: "Probar MadnessBot Ahora",
     hero_cta_secondary: "Más Información",
-    hero_note: "100 consultas gratis • Sin tarjeta de crédito • Acceso completo a funciones",
+    hero_note: "7 días de prueba gratis • Sin tarjeta de crédito • Acceso completo a funciones",
 
     // Comparison Section
     comp_title: "vs ChatGPT",
@@ -349,7 +349,7 @@ export const translations = {
     feat_growth_title: "Informes de Crecimiento con Investigación Profunda",
     feat_growth_desc: "Análisis competitivo con IA y planes de crecimiento de 30/60/90 días para tu taller",
     feat_price_title: "Precios Accesibles",
-    feat_price_desc: "$19.99/mes - más barato que AllData, Mitchell1 y ChatGPT",
+    feat_price_desc: "Desde $19.99/mes - más barato que AllData, Mitchell1 y ChatGPT",
 
     // ChatGPT Limitations
     limit_parts_title: "Sin Integración de Piezas",
@@ -415,7 +415,7 @@ export const translations = {
     cta_title: "¿Listo para Transformar Tu Taller?",
     cta_subtitle: "Únete a miles de profesionales automotrices que usan MadnessBot para diagnosticar más rápido, reparar mejor y hacer crecer su negocio.",
     cta_button: "Probar MadnessBot Gratis",
-    cta_note: "Sin tarjeta de crédito • 100 consultas gratis • Cancela en cualquier momento",
+    cta_note: "Sin tarjeta de crédito • 7 días de prueba gratis • Cancela en cualquier momento",
 
     // Footer
     footer_desc: "Tu asistente de Mecánico Maestro impulsado por IA. Disponible 24/7 para diagnósticos automotrices, búsqueda de piezas y gestión de herramientas.",
@@ -512,7 +512,7 @@ export const translations = {
     aff_social_youtube_tip3: "Demuestra escenarios de diagnóstico reales que enfrentan los mecánicos",
     aff_social_youtube_tip4: "Muestra la función de inventario de herramientas—es revolucionaria",
     aff_social_youtube_tip5: "Agrega un comentario fijado con tu enlace de afiliado",
-    aff_social_youtube_tip6: "Menciona las 100 consultas gratis—sin tarjeta de crédito",
+    aff_social_youtube_tip6: "Menciona los 7 días de prueba gratis—sin tarjeta de crédito",
     aff_social_instagram: "Instagram",
     aff_social_instagram_desc: "Genial para contenido visual, Stories y Reels",
     aff_social_instagram_tip1: "Usa Stories para mostrar victorias rápidas con MadnessBot (clips de 15-30 seg)",
@@ -625,10 +625,10 @@ export const translations = {
     hero_title_1: "O Mestre Mecânico ",
     hero_title_2: "da Sua Oficina",
     hero_title_3: ", disponível 24/7",
-    hero_subtitle: "Orientação diagnóstica com MAD-6.2, busca de peças em tempo real, relatórios de crescimento com pesquisa profunda, e gestão inteligente de ferramentas para profissionais automotivos.",
+    hero_subtitle: "Orientação diagnóstica com IA, busca de peças em tempo real, relatórios de crescimento com pesquisa profunda, e gestão inteligente de ferramentas para profissionais automotivos.",
     hero_cta_primary: "Experimente o MadnessBot",
     hero_cta_secondary: "Saiba Mais",
-    hero_note: "100 consultas grátis • Sem cartão de crédito • Acesso completo aos recursos",
+    hero_note: "7 dias de teste grátis • Sem cartão de crédito • Acesso completo aos recursos",
 
     // Comparison Section
     comp_title: "vs ChatGPT",
@@ -656,7 +656,7 @@ export const translations = {
     feat_growth_title: "Relatórios de Crescimento com Pesquisa Profunda",
     feat_growth_desc: "Análise competitiva com IA e planos de crescimento de 30/60/90 dias para sua oficina",
     feat_price_title: "Preço Acessível",
-    feat_price_desc: "$19,99/mês - mais barato que AllData, Mitchell1 e ChatGPT",
+    feat_price_desc: "A partir de $19,99/mês - mais barato que AllData, Mitchell1 e ChatGPT",
 
     // ChatGPT Limitations
     limit_parts_title: "Sem Integração de Peças",
@@ -722,7 +722,7 @@ export const translations = {
     cta_title: "Pronto para Transformar Sua Oficina?",
     cta_subtitle: "Junte-se a milhares de profissionais automotivos que usam o MadnessBot para diagnosticar mais rápido, reparar com mais precisão e crescer o negócio.",
     cta_button: "Teste o MadnessBot Grátis",
-    cta_note: "Sem cartão de crédito • 100 consultas grátis • Cancele quando quiser",
+    cta_note: "Sem cartão de crédito • 7 dias de teste grátis • Cancele quando quiser",
 
     // Footer
     footer_desc: "Seu assistente Mestre Mecânico com IA. Disponível 24/7 para diagnósticos automotivos, busca de peças e gestão de ferramentas.",
@@ -819,7 +819,7 @@ export const translations = {
     aff_social_youtube_tip3: "Demonstre cenários de diagnóstico reais que mecânicos enfrentam",
     aff_social_youtube_tip4: "Mostre o recurso de inventário de ferramentas—é revolucionário",
     aff_social_youtube_tip5: "Adicione um comentário fixado com seu link de afiliado",
-    aff_social_youtube_tip6: "Mencione as 100 consultas grátis—sem cartão de crédito",
+    aff_social_youtube_tip6: "Mencione os 7 dias de teste grátis—sem cartão de crédito",
     aff_social_instagram: "Instagram",
     aff_social_instagram_desc: "Ótimo para conteúdo visual, Stories e Reels",
     aff_social_instagram_tip1: "Use Stories para mostrar vitórias rápidas com MadnessBot (clips de 15-30 seg)",
