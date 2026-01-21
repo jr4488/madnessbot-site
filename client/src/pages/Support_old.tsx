@@ -5,8 +5,10 @@ import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
 import { ArrowLeft, BookOpen, Wrench, Image, Video, Search, Database, Settings, HelpCircle } from "lucide-react";
 import { Link } from "wouter";
+import { appendViaParam } from "@/lib/affiliate";
 
 export default function Support() {
+  const madnessToolsUrl = appendViaParam("https://madnesstools.com");
   const sections = [
     {
       id: "getting-started",
@@ -261,8 +263,8 @@ Upload PDFs, service manuals, and documents. MadnessBot uses AI to search them a
 - All features enabled
 - Perfect for testing the system
 
-**Premium Plan ($19.99/month):**
-- Unlimited queries (10,000/month soft limit)
+**Premium Plan ($49.95/month):**
+- 1500 queries/month
 - Image generation and analysis
 - Video generation
 - Priority support
@@ -368,9 +370,9 @@ MadnessBot is focused on automotive work:
 - Complex queries may take longer
 
 **Out of Queries (Trial Users):**
-- Upgrade to Premium for unlimited queries
+- Upgrade to Premium for 1500 queries/month
 - Each trial account gets 100 queries
-- Premium: $19.99/month unlimited
+- Premium: $49.95/month
 
 **Tool Inventory Not Updating:**
 - Be specific with tool names
@@ -419,7 +421,7 @@ A: Each technician should have their own account. This keeps tool inventories, c
 A: Yes! All data is encrypted at rest and in transit. Per-user isolation ensures your data never mixes with others. We use Google OAuth for secure authentication.
 
 **Q: What if I run out of trial queries?**
-A: Upgrade to Premium ($19.99/month) for unlimited queries and continued access to all features.
+A: Upgrade to Premium ($49.95/month) for 1500 queries/month and continued access to all features.
 
 **Q: Can I cancel anytime?**
 A: Yes! Premium subscriptions can be canceled anytime from your account dashboard. No long-term contracts.
@@ -560,7 +562,7 @@ A: Visit madnesstools.com for live chat, email support, and help documentation.`
               Try MadnessBot free with 100 queries. No credit card required.
             </p>
             <Button size="lg" asChild>
-              <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+              <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer">
                 Try MadnessBot Now
               </a>
             </Button>

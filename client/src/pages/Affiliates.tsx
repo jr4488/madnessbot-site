@@ -604,14 +604,14 @@ export default function Affiliates() {
                       <div className="space-y-4">
                         <div className="p-4 rounded-lg bg-[#1A1A25] border border-[#2A2A3A]">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-[#A3A3A3]">{t("pricing_diy_title")} ($19.99/mo)</span>
+                            <span className="text-[#A3A3A3]">{t("pricing_diy_title")} ($19.95/mo)</span>
                             <span className="text-[#FF4D00] font-bold">$4.00/mo</span>
                           </div>
                           <div className="text-xs text-[#737373]">{t("aff_commission_per_customer")}</div>
                         </div>
                         <div className="p-4 rounded-lg bg-[#1A1A25] border border-[#FF4D00]" style={{ boxShadow: '0 0 20px rgba(255,77,0,0.15)' }}>
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-[#F5F5F5] font-medium">{t("pricing_pro_title")} ($49.99/mo)</span>
+                            <span className="text-[#F5F5F5] font-medium">{t("pricing_pro_title")} ($49.95/mo)</span>
                             <span className="text-[#FF4D00] font-bold">$10.00/mo</span>
                           </div>
                           <div className="text-xs text-[#737373]">{t("aff_commission_per_customer")}</div>

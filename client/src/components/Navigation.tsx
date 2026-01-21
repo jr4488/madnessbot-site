@@ -4,11 +4,13 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "./LanguageToggle";
+import { appendViaParam } from "@/lib/affiliate";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
   const { t } = useLanguage();
+  const madnessToolsUrl = appendViaParam("https://madnesstools.com");
 
   const scrollToSection = (sectionId: string) => {
     if (location !== "/") {
@@ -62,7 +64,7 @@ export default function Navigation() {
               </span>
             </Link>
             <Button asChild>
-              <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+              <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer">
                 {t("nav_try")}
               </a>
             </Button>
@@ -103,7 +105,7 @@ export default function Navigation() {
                 </span>
               </Link>
               <Button asChild className="w-full">
-                <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+                <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer">
                   {t("nav_try")}
                 </a>
               </Button>

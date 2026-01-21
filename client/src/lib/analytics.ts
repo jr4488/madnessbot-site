@@ -40,10 +40,10 @@ const CONVERSION_CONFIG = {
     // Sign up / Start trial - tracks when user clicks to sign up
     signUp: 'OYU7CPyrvM4bEI3UkqJC', // TODO: Replace with actual Sign Up label
 
-    // Purchase DIY plan ($29/mo)
+    // Purchase DIY plan ($19.95/mo)
     purchaseDiy: '', // TODO: Add label from Google Ads
 
-    // Purchase Pro plan ($99/mo) 
+    // Purchase Pro plan ($49.95/mo) 
     purchasePro: 'OYU7CPyrvM4bEI3UkqJC', // This one was retrieved successfully
 
     // Enterprise lead inquiry

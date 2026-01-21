@@ -1,8 +1,10 @@
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { appendViaParam } from "@/lib/affiliate";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const madnessToolsUrl = appendViaParam("https://madnesstools.com");
   
   return (
     <footer className="bg-card border-t border-border py-12">
@@ -51,7 +53,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://madnesstools.com"
+                  href={madnessToolsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -69,7 +71,7 @@ export default function Footer() {
               {t("footer_get_started_desc")}
             </p>
             <a
-              href="https://madnesstools.com"
+              href={madnessToolsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity text-sm font-medium"

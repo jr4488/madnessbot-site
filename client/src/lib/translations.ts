@@ -42,7 +42,7 @@ export const translations = {
     feat_growth_title: "Deep Research Growth Reports",
     feat_growth_desc: "AI-powered competitive analysis with 30/60/90-day growth plans for your shop",
     feat_price_title: "Affordable Pricing",
-    feat_price_desc: "Starting at $19.99/month - cheaper than AllData, Mitchell1 and ChatGPT",
+    feat_price_desc: "Starting at $19.95/month - cheaper than AllData, Mitchell1 and ChatGPT",
 
     // ChatGPT Limitations
     limit_parts_title: "No Parts Integration",
@@ -73,7 +73,7 @@ export const translations = {
     pricing_popular: "Most Popular",
 
     pricing_diy_title: "DIY",
-    pricing_diy_price: "$19.99",
+    pricing_diy_price: "$19.95",
     pricing_diy_period: "/month",
     pricing_diy_desc: "For hobbyists & DIYers",
     pricing_diy_feat1: "500 queries / month",
@@ -83,7 +83,7 @@ export const translations = {
     pricing_diy_cta: "Get Started",
 
     pricing_pro_title: "Pro",
-    pricing_pro_price: "$49.99",
+    pricing_pro_price: "$49.95",
     pricing_pro_period: "/month",
     pricing_pro_desc: "For professional shops",
     pricing_pro_feat1: "1500 queries / month",
@@ -362,7 +362,7 @@ export const translations = {
     feat_growth_title: "Informes de Crecimiento con Investigación Profunda",
     feat_growth_desc: "Análisis competitivo con IA y planes de crecimiento de 30/60/90 días para tu taller",
     feat_price_title: "Precios Accesibles",
-    feat_price_desc: "Desde $19.99/mes - más barato que AllData, Mitchell1 y ChatGPT",
+    feat_price_desc: "Desde $19.95/mes - más barato que AllData, Mitchell1 y ChatGPT",
 
     // ChatGPT Limitations
     limit_parts_title: "Sin Integración de Piezas",
@@ -393,7 +393,7 @@ export const translations = {
     pricing_popular: "Más Popular",
 
     pricing_diy_title: "Bricolaje",
-    pricing_diy_price: "$19.99",
+    pricing_diy_price: "$19.95",
     pricing_diy_period: "/mes",
     pricing_diy_desc: "Para aficionados y bricolaje",
     pricing_diy_feat1: "500 consultas / mes",
@@ -403,7 +403,7 @@ export const translations = {
     pricing_diy_cta: "Comenzar",
 
     pricing_pro_title: "Profesional",
-    pricing_pro_price: "$49.99",
+    pricing_pro_price: "$49.95",
     pricing_pro_period: "/mes",
     pricing_pro_desc: "Para talleres profesionales",
     pricing_pro_feat1: "1500 consultas / mes",
@@ -682,7 +682,7 @@ export const translations = {
     feat_growth_title: "Relatórios de Crescimento com Pesquisa Profunda",
     feat_growth_desc: "Análise competitiva com IA e planos de crescimento de 30/60/90 dias para sua oficina",
     feat_price_title: "Preço Acessível",
-    feat_price_desc: "A partir de $19,99/mês - mais barato que AllData, Mitchell1 e ChatGPT",
+    feat_price_desc: "A partir de $19,95/mês - mais barato que AllData, Mitchell1 e ChatGPT",
 
     // ChatGPT Limitations
     limit_parts_title: "Sem Integração de Peças",
@@ -713,7 +713,7 @@ export const translations = {
     pricing_popular: "Mais Popular",
 
     pricing_diy_title: "Faça Você Mesmo",
-    pricing_diy_price: "$19,99",
+    pricing_diy_price: "$19,95",
     pricing_diy_period: "/mês",
     pricing_diy_desc: "Para entusiastas e hobbistas",
     pricing_diy_feat1: "500 consultas / mês",
@@ -723,7 +723,7 @@ export const translations = {
     pricing_diy_cta: "Começar",
 
     pricing_pro_title: "Profissional",
-    pricing_pro_price: "$49,99",
+    pricing_pro_price: "$49,95",
     pricing_pro_period: "/mês",
     pricing_pro_desc: "Para oficinas profissionais",
     pricing_pro_feat1: "1500 consultas / mês",

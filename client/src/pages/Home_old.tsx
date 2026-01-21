@@ -13,8 +13,10 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import { appendViaParam } from "@/lib/affiliate";
 
 export default function Home() {
+  const madnessToolsUrl = appendViaParam("https://madnesstools.com");
   const features = [
     {
       icon: Wrench,
@@ -69,11 +71,11 @@ export default function Home() {
     },
     {
       name: "Premium",
-      price: "$19.99",
+      price: "$49.95",
       period: "/month",
       description: "For professional shops",
       features: [
-        "Unlimited queries",
+        "1500 queries / month",
         "Image generation & analysis",
         "Video demonstrations",
         "Priority support",
@@ -116,7 +118,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild className="text-lg px-8">
-                <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+                <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer">
                   Try MadnessBot Now
                   <ArrowRight className="ml-2" size={20} />
                 </a>
@@ -217,7 +219,7 @@ export default function Home() {
                       <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
                       <div>
                         <span className="font-semibold">Affordable Pricing</span>
-                        <p className="text-sm text-muted-foreground">$19.99/month - cheaper than AllData, Mitchell1 and ChatGPT</p>
+                        <p className="text-sm text-muted-foreground">$19.95/month - cheaper than AllData, Mitchell1 and ChatGPT</p>
                       </div>
                     </li>
                   </ul>
@@ -298,7 +300,7 @@ export default function Home() {
                 MadnessBot is purpose-built for automotive professionals. Every feature is designed to save you time, reduce costs, and improve diagnostic accuracy.
               </p>
               <a
-                href="https://madnesstools.com"
+                href={madnessToolsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity font-semibold"
@@ -358,7 +360,7 @@ export default function Home() {
                     variant={plan.highlighted ? "default" : "outline"}
                     asChild
                   >
-                    <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+                    <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer">
                       {plan.name === "Trial" ? "Start Free Trial" : "Get Started"}
                     </a>
                   </Button>
@@ -380,7 +382,7 @@ export default function Home() {
               Join thousands of automotive professionals using MadnessBot to diagnose faster, fix smarter, and grow their business.
             </p>
             <Button size="lg" asChild className="text-lg px-8">
-              <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer">
+              <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer">
                 Try MadnessBot Free
                 <ArrowRight className="ml-2" size={20} />
               </a>

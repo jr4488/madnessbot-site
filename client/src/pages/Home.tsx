@@ -6,6 +6,7 @@ import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CheckCircle2 } from "lucide-react";
 import { trackConversion } from "@/lib/analytics";
+import { appendViaParam } from "@/lib/affiliate";
 
 // MadnessBot M-Bolt Logo SVG Component
 const MBoltLogo = ({ className = "", size = 20 }: { className?: string; size?: number }) => (
@@ -25,6 +26,7 @@ const BackgroundPattern = () => (
 
 export default function Home() {
   const { t } = useLanguage();
+  const madnessToolsUrl = appendViaParam("https://madnesstools.com");
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -49,7 +51,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500]">
-                <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
+                <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
                   {t("hero_cta_primary")}
                 </a>
               </Button>
@@ -149,7 +151,7 @@ export default function Home() {
 
             <div className="flex justify-center mt-8">
               <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500]">
-                <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
+                <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
                   {t("comp_cta")} <span className="ml-2">→</span>
                 </a>
               </Button>
@@ -186,7 +188,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <Button className="w-full border-[#2A2A3A] text-[#D4D4D4] hover:bg-[#1A1A25]" variant="outline" asChild>
-                    <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('purchaseDiy')}>
+                    <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('purchaseDiy')}>
                       {t("pricing_diy_cta")}
                     </a>
                   </Button>
@@ -218,7 +220,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <Button className="w-full btn-glow bg-[#FF4D00] hover:bg-[#E64500] text-white" size="lg" asChild>
-                    <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('purchasePro')}>
+                    <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('purchasePro')}>
                       {t("pricing_pro_cta")}
                     </a>
                   </Button>
@@ -264,7 +266,7 @@ export default function Home() {
               {t("cta_subtitle")}
             </p>
             <Button size="lg" asChild className="text-lg px-8 btn-glow bg-[#FF4D00] hover:bg-[#E64500] text-white">
-              <a href="https://madnesstools.com" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
+              <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('signUp')}>
                 {t("cta_button")} <span className="ml-2">→</span>
               </a>
             </Button>

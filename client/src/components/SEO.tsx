@@ -52,7 +52,7 @@ export default function SEO({
       "applicationCategory": "BusinessApplication",
       "offers": {
         "@type": "Offer",
-        "price": "19.99",
+        "price": "19.95",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31"
       },
