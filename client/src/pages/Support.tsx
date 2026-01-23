@@ -10,6 +10,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Streamdown } from "streamdown";
 import supportContentData from "@/lib/supportContent.json";
 import { updateHashHistory, type HashHistoryMode } from "@/lib/hashNavigation";
+import { appendAffiliateParams } from "@/lib/affiliate";
 
 // Helper to calculate sticky header height dynamically
 const getStickyHeaderHeight = () => {
@@ -127,12 +128,27 @@ export default function Support() {
   // Intercept anchor link clicks in content and route through scrollToSection
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      if (anchor && anchor.hash && anchor.hash.startsWith('#')) {
-        const sectionId = anchor.hash.slice(1);
+      const target = e.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const anchor = target.closest("a");
+      if (!(anchor instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      if (anchor.hash && anchor.hash.startsWith("#")) {
+        const raw = anchor.hash.slice(1);
+        let sectionId = raw;
+        try {
+          sectionId = decodeURIComponent(raw);
+        } catch {
+          sectionId = raw;
+        }
+
         // Check if this section exists in our content
-        if (sections.some(s => s.id === sectionId)) {
+        if (sections.some((s) => s.id === sectionId)) {
           e.preventDefault();
           scrollToHash(anchor.hash);
         }
@@ -172,7 +188,7 @@ export default function Support() {
         {/* Hero Section */}
         <section className="py-12 bg-gradient-to-b from-primary/5 to-background">
           <div className="container">
-            <Link href="/">
+            <Link href={appendAffiliateParams("/")}>
               <Button variant="ghost" className="mb-6">
                 <ArrowLeft className="mr-2" size={16} />
                 {t("support_back")}

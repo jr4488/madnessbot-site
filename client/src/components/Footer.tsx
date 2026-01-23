@@ -1,10 +1,13 @@
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { appendViaParam } from "@/lib/affiliate";
+import { appendAffiliateParams, appendViaParam } from "@/lib/affiliate";
 
 export default function Footer() {
   const { t } = useLanguage();
   const madnessToolsUrl = appendViaParam("https://madnesstools.com");
+  const homeHref = appendAffiliateParams("/");
+  const supportHref = appendAffiliateParams("/support");
+  const affiliatesHref = appendAffiliateParams("/affiliates");
   
   return (
     <footer className="bg-card border-t border-border py-12">
@@ -31,21 +34,21 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">{t("footer_quick_links")}</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/">
+                <Link href={homeHref}>
                   <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     {t("footer_link_home")}
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/support">
+                <Link href={supportHref}>
                   <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     {t("footer_link_support")}
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/affiliates">
+                <Link href={affiliatesHref}>
                   <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     {t("footer_link_affiliates")}
                   </span>

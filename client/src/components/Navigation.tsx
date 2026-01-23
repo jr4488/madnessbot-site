@@ -4,17 +4,19 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "./LanguageToggle";
-import { appendViaParam } from "@/lib/affiliate";
+import { appendAffiliateParams, appendViaParam } from "@/lib/affiliate";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
   const { t } = useLanguage();
   const madnessToolsUrl = appendViaParam("https://madnesstools.com");
+  const homeHref = appendAffiliateParams("/");
+  const supportHref = appendAffiliateParams("/support");
 
   const scrollToSection = (sectionId: string) => {
     if (location !== "/") {
-      window.location.href = `/#${sectionId}`;
+      window.location.href = appendAffiliateParams(`/#${sectionId}`);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -29,7 +31,7 @@ export default function Navigation() {
       <div className="container">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/">
+          <Link href={homeHref}>
             <div className="flex items-center gap-3 cursor-pointer">
               {/* MadnessBot M-Bolt Logo with sparks (32px+ per style guide v2) */}
               <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
@@ -58,7 +60,7 @@ export default function Navigation() {
             >
               {t("nav_pricing")}
             </button>
-            <Link href="/support">
+            <Link href={supportHref}>
               <span className="text-foreground hover:text-primary transition-colors cursor-pointer">
                 {t("nav_support")}
               </span>
@@ -99,7 +101,7 @@ export default function Navigation() {
               >
                 {t("nav_pricing")}
               </button>
-              <Link href="/support">
+              <Link href={supportHref}>
                 <span className="text-foreground hover:text-primary transition-colors cursor-pointer block py-2">
                   {t("nav_support")}
                 </span>

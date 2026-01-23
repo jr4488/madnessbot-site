@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import { useState, type CSSProperties } from "react";
+import { appendAffiliateParams } from "@/lib/affiliate";
 
 // MadnessBot M-Bolt Logo SVG Component
 const MBoltLogo = ({
@@ -140,15 +141,35 @@ const BannerPreview = ({
     ? "100%"
     : `${Math.round(previewWidth * (isSquare ? 0.36 : 0.42))}px`;
   
-  const handleCopyCode = () => {
+  const handleCopyCode = async () => {
     const code = `<a href="https://madnesstools.com?via=YOUR_AFFILIATE_ID" target="_blank" rel="noopener">
   <img src="https://madnesstools.com/banners/madnessbot-${width}x${height}-${variant}.png" 
        alt="MadnessBot - AI Master Mechanic" 
        width="${width}" height="${height}" />
 </a>`;
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = code;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        const succeeded = document.execCommand("copy");
+        textarea.remove();
+        if (!succeeded) {
+          throw new Error("Copy failed");
+        }
+      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.warn("[Affiliates] Clipboard copy failed", error);
+      window.prompt("Copy this code:", code);
+    }
   };
 
   const handleDownload = async () => {
@@ -461,7 +482,7 @@ export default function Affiliates() {
         <section className="relative py-20 md:py-28 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#FF4D00]/10 via-background to-background" />
           <div className="container relative">
-            <Link href="/">
+            <Link href={appendAffiliateParams("/")}>
               <Button variant="ghost" className="mb-6">
                 <ArrowLeft className="mr-2" size={16} />
                 {t("aff_back")}
