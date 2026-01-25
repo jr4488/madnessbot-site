@@ -4,6 +4,7 @@ import { appendAffiliateParams, appendViaParam } from "./affiliate";
 describe("appendAffiliateParams", () => {
   beforeEach(() => {
     window.history.replaceState(null, "", "/");
+    window.localStorage.clear();
   });
 
   it("returns original path when no affiliate params exist", () => {
@@ -33,11 +34,25 @@ describe("appendAffiliateParams", () => {
       "/support?via=existing&referral=beta"
     );
   });
+
+  it("falls back to stored params when query is empty", () => {
+    window.localStorage.setItem("rewardful_via", "storedvia");
+    window.localStorage.setItem("rewardful_referral_ts", String(Date.now()));
+    expect(appendAffiliateParams("/support")).toBe("/support?via=storedvia");
+  });
+
+  it("ignores expired stored params", () => {
+    const ninetyDaysAgo = Date.now() - 1000 * 60 * 60 * 24 * 90;
+    window.localStorage.setItem("rewardful_via", "expiredvia");
+    window.localStorage.setItem("rewardful_referral_ts", String(ninetyDaysAgo));
+    expect(appendAffiliateParams("/support")).toBe("/support");
+  });
 });
 
 describe("appendViaParam", () => {
   beforeEach(() => {
     window.history.replaceState(null, "", "/");
+    window.localStorage.clear();
   });
 
   it("prefers via from current query", () => {
@@ -58,6 +73,14 @@ describe("appendViaParam", () => {
     window.history.replaceState(null, "", "/?via=alpha");
     expect(appendViaParam("https://example.com/?via=existing")).toBe(
       "https://example.com/?via=existing"
+    );
+  });
+
+  it("uses stored params when query is empty", () => {
+    window.localStorage.setItem("rewardful_via", "storedvia");
+    window.localStorage.setItem("rewardful_referral_ts", String(Date.now()));
+    expect(appendViaParam("https://example.com")).toBe(
+      "https://example.com/?via=storedvia"
     );
   });
 });

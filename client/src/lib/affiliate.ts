@@ -3,21 +3,84 @@ type AffiliateParams = {
   referral?: string;
 };
 
+const AFFILIATE_TTL_MS = 1000 * 60 * 60 * 24 * 60;
+const STORAGE_KEYS = {
+  via: "rewardful_via",
+  referral: "rewardful_referral",
+  ts: "rewardful_referral_ts",
+};
+
+function readStoredParams(): AffiliateParams {
+  try {
+    if (typeof window === "undefined") {
+      return {};
+    }
+    const via = window.localStorage.getItem(STORAGE_KEYS.via) || undefined;
+    const referral =
+      window.localStorage.getItem(STORAGE_KEYS.referral) || undefined;
+    if (!via && !referral) {
+      return {};
+    }
+    const tsRaw = window.localStorage.getItem(STORAGE_KEYS.ts);
+    if (tsRaw) {
+      const ts = Number(tsRaw);
+      if (Number.isFinite(ts) && Date.now() - ts > AFFILIATE_TTL_MS) {
+        window.localStorage.removeItem(STORAGE_KEYS.via);
+        window.localStorage.removeItem(STORAGE_KEYS.referral);
+        window.localStorage.removeItem(STORAGE_KEYS.ts);
+        return {};
+      }
+    } else {
+      window.localStorage.setItem(STORAGE_KEYS.ts, String(Date.now()));
+    }
+    return { via, referral };
+  } catch {
+    return {};
+  }
+}
+
+function storeParams(params: AffiliateParams) {
+  try {
+    if (typeof window === "undefined") {
+      return;
+    }
+    const { via, referral } = params;
+    if (!via && !referral) {
+      return;
+    }
+    if (via) {
+      window.localStorage.setItem(STORAGE_KEYS.via, via);
+    } else {
+      window.localStorage.removeItem(STORAGE_KEYS.via);
+    }
+    if (referral) {
+      window.localStorage.setItem(STORAGE_KEYS.referral, referral);
+    } else {
+      window.localStorage.removeItem(STORAGE_KEYS.referral);
+    }
+    window.localStorage.setItem(STORAGE_KEYS.ts, String(Date.now()));
+  } catch {
+    return;
+  }
+}
+
 function getAffiliateParams(search?: string): AffiliateParams {
   try {
     const query =
       search ?? (typeof window !== "undefined" ? window.location.search : "");
     if (!query) {
-      return {};
+      return readStoredParams();
     }
 
     const params = new URLSearchParams(query);
     const via = params.get("via") || undefined;
     const referral = params.get("referral") || undefined;
     if (!via && !referral) {
-      return {};
+      return readStoredParams();
     }
-    return { via, referral };
+    const next = { via, referral };
+    storeParams(next);
+    return next;
   } catch {
     return {};
   }

@@ -142,7 +142,7 @@ const BannerPreview = ({
     : `${Math.round(previewWidth * (isSquare ? 0.36 : 0.42))}px`;
   
   const handleCopyCode = async () => {
-    const code = `<a href="https://madnesstools.com?via=YOUR_AFFILIATE_ID" target="_blank" rel="noopener">
+    const code = `<a href="https://madnessbot.com?via=YOUR_AFFILIATE_ID" target="_blank" rel="noopener">
   <img src="https://madnesstools.com/banners/madnessbot-${width}x${height}-${variant}.png" 
        alt="MadnessBot - AI Master Mechanic" 
        width="${width}" height="${height}" />
