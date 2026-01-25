@@ -125,3 +125,68 @@ export function appendAffiliateParams(path: string, search?: string): string {
     return path;
   }
 }
+
+function isMadnessToolsUrl(href: string): boolean {
+  try {
+    const url = new URL(href, window.location.origin);
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return false;
+    }
+    return url.hostname.endsWith("madnesstools.com");
+  } catch {
+    return false;
+  }
+}
+
+export function rewriteMadnessToolsLinks(
+  root: ParentNode = document,
+  search?: string
+): number {
+  if (typeof window === "undefined") {
+    return 0;
+  }
+  let updated = 0;
+  root.querySelectorAll("a[href]").forEach((link) => {
+    if (!(link instanceof HTMLAnchorElement)) {
+      return;
+    }
+    const rawHref = link.getAttribute("href");
+    if (!rawHref || !isMadnessToolsUrl(rawHref)) {
+      return;
+    }
+    const nextHref = appendViaParam(new URL(rawHref, window.location.origin).toString(), search);
+    if (nextHref !== link.href) {
+      link.href = nextHref;
+      updated += 1;
+    }
+  });
+  return updated;
+}
+
+export function startAffiliateLinkRewriter(search?: string): () => void {
+  if (typeof window === "undefined" || !document?.body) {
+    return () => {};
+  }
+
+  let rafId = 0;
+  const schedule = () => {
+    if (rafId) {
+      return;
+    }
+    rafId = window.requestAnimationFrame(() => {
+      rafId = 0;
+      rewriteMadnessToolsLinks(document, search);
+    });
+  };
+
+  rewriteMadnessToolsLinks(document, search);
+  const observer = new MutationObserver(schedule);
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  return () => {
+    observer.disconnect();
+    if (rafId) {
+      window.cancelAnimationFrame(rafId);
+    }
+  };
+}

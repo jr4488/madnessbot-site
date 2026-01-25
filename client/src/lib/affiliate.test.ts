@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { appendAffiliateParams, appendViaParam } from "./affiliate";
+import { appendAffiliateParams, appendViaParam, rewriteMadnessToolsLinks } from "./affiliate";
 
 describe("appendAffiliateParams", () => {
   beforeEach(() => {
@@ -82,5 +82,31 @@ describe("appendViaParam", () => {
     expect(appendViaParam("https://example.com")).toBe(
       "https://example.com/?via=storedvia"
     );
+  });
+});
+
+describe("rewriteMadnessToolsLinks", () => {
+  beforeEach(() => {
+    window.history.replaceState(null, "", "/");
+    window.localStorage.clear();
+    document.body.innerHTML = "";
+  });
+
+  it("appends via param to madnesstools.com anchors", () => {
+    window.history.replaceState(null, "", "/?via=alpha");
+    document.body.innerHTML = '<a id="target" href="https://madnesstools.com">Go</a>';
+    const updated = rewriteMadnessToolsLinks(document);
+    const anchor = document.getElementById("target") as HTMLAnchorElement;
+    expect(anchor.href).toBe("https://madnesstools.com/?via=alpha");
+    expect(updated).toBe(1);
+  });
+
+  it("ignores non-madnesstools links", () => {
+    window.history.replaceState(null, "", "/?via=alpha");
+    document.body.innerHTML = '<a id="target" href="https://example.com">Go</a>';
+    const updated = rewriteMadnessToolsLinks(document);
+    const anchor = document.getElementById("target") as HTMLAnchorElement;
+    expect(anchor.href).toBe("https://example.com/");
+    expect(updated).toBe(0);
   });
 });
