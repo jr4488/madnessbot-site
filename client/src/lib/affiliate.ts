@@ -182,33 +182,67 @@ export function wrapOutboundNavigation(search?: string): () => void {
   const rawOpen = window.open?.bind(window);
   const rawAssign = window.location.assign.bind(window.location);
   const rawReplace = window.location.replace.bind(window.location);
+  let patchedOpen = false;
+  let patchedAssign = false;
+  let patchedReplace = false;
 
   if (rawOpen) {
-    window.open = (url?: string | URL, target?: string, features?: string) => {
-      if (typeof url === "string" || url instanceof URL) {
-        const next = appendViaIfMadnessTools(String(url), search);
-        return rawOpen(next, target, features);
-      }
-      return rawOpen(url as string, target, features);
-    };
+    try {
+      window.open = (url?: string | URL, target?: string, features?: string) => {
+        if (typeof url === "string" || url instanceof URL) {
+          const next = appendViaIfMadnessTools(String(url), search);
+          return rawOpen(next, target, features);
+        }
+        return rawOpen(url as string, target, features);
+      };
+      patchedOpen = true;
+    } catch {
+      // Some browsers disallow overriding window.open.
+    }
   }
 
-  window.location.assign = (url: string | URL) => {
-    const next = appendViaIfMadnessTools(String(url), search);
-    return rawAssign(next);
-  };
+  try {
+    window.location.assign = (url: string | URL) => {
+      const next = appendViaIfMadnessTools(String(url), search);
+      return rawAssign(next);
+    };
+    patchedAssign = true;
+  } catch {
+    // Some browsers treat location.assign as read-only.
+  }
 
-  window.location.replace = (url: string | URL) => {
-    const next = appendViaIfMadnessTools(String(url), search);
-    return rawReplace(next);
-  };
+  try {
+    window.location.replace = (url: string | URL) => {
+      const next = appendViaIfMadnessTools(String(url), search);
+      return rawReplace(next);
+    };
+    patchedReplace = true;
+  } catch {
+    // Some browsers treat location.replace as read-only.
+  }
 
   return () => {
-    if (rawOpen) {
-      window.open = rawOpen;
+    if (patchedOpen && rawOpen) {
+      try {
+        window.open = rawOpen;
+      } catch {
+        return;
+      }
     }
-    window.location.assign = rawAssign;
-    window.location.replace = rawReplace;
+    if (patchedAssign) {
+      try {
+        window.location.assign = rawAssign;
+      } catch {
+        return;
+      }
+    }
+    if (patchedReplace) {
+      try {
+        window.location.replace = rawReplace;
+      } catch {
+        return;
+      }
+    }
   };
 }
 
