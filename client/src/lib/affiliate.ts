@@ -138,6 +138,16 @@ function isMadnessToolsUrl(href: string): boolean {
   }
 }
 
+function appendViaIfMadnessTools(url: string, search?: string): string {
+  if (typeof window === "undefined") {
+    return url;
+  }
+  if (!isMadnessToolsUrl(url)) {
+    return url;
+  }
+  return appendViaParam(url, search);
+}
+
 export function rewriteMadnessToolsLinks(
   root: ParentNode = document,
   search?: string
@@ -154,7 +164,8 @@ export function rewriteMadnessToolsLinks(
     if (!rawHref || !isMadnessToolsUrl(rawHref)) {
       return;
     }
-    const nextHref = appendViaParam(new URL(rawHref, window.location.origin).toString(), search);
+    const absoluteHref = new URL(rawHref, window.location.origin).toString();
+    const nextHref = appendViaIfMadnessTools(absoluteHref, search);
     if (nextHref !== link.href) {
       link.href = nextHref;
       updated += 1;
@@ -163,12 +174,81 @@ export function rewriteMadnessToolsLinks(
   return updated;
 }
 
+export function wrapOutboundNavigation(search?: string): () => void {
+  if (typeof window === "undefined") {
+    return () => {};
+  }
+
+  const rawOpen = window.open?.bind(window);
+  const rawAssign = window.location.assign.bind(window.location);
+  const rawReplace = window.location.replace.bind(window.location);
+
+  if (rawOpen) {
+    window.open = (url?: string | URL, target?: string, features?: string) => {
+      if (typeof url === "string" || url instanceof URL) {
+        const next = appendViaIfMadnessTools(String(url), search);
+        return rawOpen(next, target, features);
+      }
+      return rawOpen(url as string, target, features);
+    };
+  }
+
+  window.location.assign = (url: string | URL) => {
+    const next = appendViaIfMadnessTools(String(url), search);
+    return rawAssign(next);
+  };
+
+  window.location.replace = (url: string | URL) => {
+    const next = appendViaIfMadnessTools(String(url), search);
+    return rawReplace(next);
+  };
+
+  return () => {
+    if (rawOpen) {
+      window.open = rawOpen;
+    }
+    window.location.assign = rawAssign;
+    window.location.replace = rawReplace;
+  };
+}
+
+function startAffiliateClickCapture(search?: string): () => void {
+  if (typeof window === "undefined") {
+    return () => {};
+  }
+
+  const handler = (event: MouseEvent) => {
+    const target = event.target as Element | null;
+    if (!target) {
+      return;
+    }
+    const anchor = target.closest("a[href]") as HTMLAnchorElement | null;
+    if (!anchor || !isMadnessToolsUrl(anchor.href)) {
+      return;
+    }
+    const nextHref = appendViaIfMadnessTools(anchor.href, search);
+    if (nextHref !== anchor.href) {
+      anchor.href = nextHref;
+    }
+  };
+
+  window.addEventListener("click", handler, true);
+  window.addEventListener("auxclick", handler, true);
+
+  return () => {
+    window.removeEventListener("click", handler, true);
+    window.removeEventListener("auxclick", handler, true);
+  };
+}
+
 export function startAffiliateLinkRewriter(search?: string): () => void {
   if (typeof window === "undefined" || !document?.body) {
     return () => {};
   }
 
   let rafId = 0;
+  const stopNavigation = wrapOutboundNavigation(search);
+  const stopClickCapture = startAffiliateClickCapture(search);
   const schedule = () => {
     if (rafId) {
       return;
@@ -188,5 +268,7 @@ export function startAffiliateLinkRewriter(search?: string): () => void {
     if (rafId) {
       window.cancelAnimationFrame(rafId);
     }
+    stopClickCapture();
+    stopNavigation();
   };
 }
