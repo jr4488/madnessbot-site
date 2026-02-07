@@ -412,7 +412,7 @@ A: MadnessBot is purpose-built for automotive professionals with real-time web s
 A: No! MadnessBot is web-based and works on any modern browser on desktop, laptop, tablet, or smartphone.
 
 **Q: How many queries do I get?**
-A: Trial users get 100 free queries. Premium users get unlimited queries (10,000/month soft limit).
+A: Trial users get 100 free queries. Paid plans include monthly query limits (DIY: 500/mo, Pro: 1500/mo) and Enterprise includes higher monthly limits for teams.
 
 **Q: Can multiple technicians use the same account?**
 A: Each technician should have their own account. This keeps tool inventories, conversation histories, and uploaded documents separate.

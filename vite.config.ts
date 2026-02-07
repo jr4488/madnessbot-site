@@ -6,10 +6,16 @@ import path from "path";
 import { defineConfig } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime()];
+export default defineConfig(({ command }) => {
+  // The Manus runtime injects a huge inline script into HTML. Keep it for local
+  // development only; do not ship it to production builds (Vercel).
+  const plugins = [react(), tailwindcss(), jsxLocPlugin()];
+  if (command === "serve") {
+    plugins.push(vitePluginManusRuntime());
+  }
 
-export default defineConfig({
-  plugins,
+  return {
+    plugins,
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -44,4 +50,5 @@ export default defineConfig({
   test: {
     environment: "jsdom",
   },
+  };
 });
