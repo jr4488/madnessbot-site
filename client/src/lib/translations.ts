@@ -100,7 +100,7 @@ export const translations = {
     pricing_ent_feat1: "Higher monthly query limits",
     pricing_ent_feat2: "5 team member seats",
     pricing_ent_feat3: "API access & integrations",
-    pricing_ent_feat4: "Unlimited Growth Reports",
+    pricing_ent_feat4: "3 Growth Reports / month",
     pricing_ent_feat5: "Dedicated support",
     pricing_ent_cta: "Contact Sales",
 
@@ -420,7 +420,7 @@ export const translations = {
     pricing_ent_feat1: "Consultas ilimitadas",
     pricing_ent_feat2: "5 asientos de equipo",
     pricing_ent_feat3: "Acceso a API e integraciones",
-    pricing_ent_feat4: "Informes de Crecimiento ilimitados",
+    pricing_ent_feat4: "3 Informes de Crecimiento / mes",
     pricing_ent_feat5: "Soporte dedicado",
     pricing_ent_cta: "Contactar Ventas",
 
@@ -740,7 +740,7 @@ export const translations = {
     pricing_ent_feat1: "Consultas ilimitadas",
     pricing_ent_feat2: "5 assentos de equipe",
     pricing_ent_feat3: "Acesso à API e integrações",
-    pricing_ent_feat4: "Relatórios de Crescimento ilimitados",
+    pricing_ent_feat4: "3 Relatorios de Crescimento / mes",
     pricing_ent_feat5: "Suporte dedicado",
     pricing_ent_cta: "Falar com Vendas",
 
