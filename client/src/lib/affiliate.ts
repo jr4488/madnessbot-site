@@ -193,7 +193,8 @@ export function wrapOutboundNavigation(search?: string): () => void {
           const next = appendViaIfMadnessTools(String(url), search);
           return rawOpen(next, target, features);
         }
-        return rawOpen(url as string, target, features);
+        // `window.open` accepts `undefined` and will open a blank window.
+        return rawOpen(url, target, features);
       };
       patchedOpen = true;
     } catch {

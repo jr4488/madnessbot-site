@@ -97,7 +97,7 @@ export const translations = {
     pricing_ent_price: "$199.95",
     pricing_ent_period: "/month",
     pricing_ent_desc: "For shops & fleets (5 seats)",
-    pricing_ent_feat1: "Unlimited queries",
+    pricing_ent_feat1: "Higher monthly query limits",
     pricing_ent_feat2: "5 team member seats",
     pricing_ent_feat3: "API access & integrations",
     pricing_ent_feat4: "Unlimited Growth Reports",
