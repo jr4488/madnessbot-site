@@ -5,14 +5,14 @@ export const translations = {
     nav_about: "About",
     nav_pricing: "Pricing",
     nav_support: "Support",
-    nav_try: "Try MadnessBot",
+    nav_try: "Start Free Trial",
 
     // Hero Section
     hero_title_1: "Your Shop's ",
     hero_title_2: "Master Mechanic",
     hero_title_3: ", Available 24/7",
     hero_subtitle: "AI powered diagnostic guidance, real-time parts sourcing, deep research growth reports, and intelligent toolbox management for automotive professionals.",
-    hero_cta_primary: "Try MadnessBot Now",
+    hero_cta_primary: "Start Free Trial",
     hero_cta_secondary: "Learn More",
     hero_note: "7-day free trial • No credit card required • Full feature access",
 
@@ -118,11 +118,11 @@ export const translations = {
     footer_link_pricing: "Pricing",
     footer_link_support: "Support",
     footer_link_affiliates: "Affiliates",
-    footer_link_try: "Try MadnessBot",
+    footer_link_try: "Start Free Trial",
     footer_get_started: "Get Started",
     footer_get_started_desc: "Ready to transform your shop with AI-powered diagnostics?",
     footer_cta: "Start Free Trial",
-    footer_copyright: "© 2025 MadnessBot. All rights reserved",
+    footer_copyright: "© 2026 MadnessBot. All rights reserved",
 
     // Support Page
     support_back: "← Back to Home",
@@ -325,14 +325,14 @@ export const translations = {
     nav_about: "Acerca de",
     nav_pricing: "Precios",
     nav_support: "Soporte",
-    nav_try: "Probar MadnessBot",
+    nav_try: "Iniciar Prueba Gratis",
 
     // Hero Section
     hero_title_1: "El ",
     hero_title_2: "Mecánico Maestro",
     hero_title_3: " de Tu Taller, Disponible 24/7",
     hero_subtitle: "Orientación diagnóstica con IA, búsqueda de piezas en tiempo real, informes de crecimiento con investigación profunda, y gestión inteligente de caja de herramientas para profesionales automotrices.",
-    hero_cta_primary: "Probar MadnessBot Ahora",
+    hero_cta_primary: "Iniciar Prueba Gratis",
     hero_cta_secondary: "Más Información",
     hero_note: "7 días de prueba gratis • Sin tarjeta de crédito • Acceso completo a funciones",
 
@@ -438,11 +438,11 @@ export const translations = {
     footer_link_pricing: "Precios",
     footer_link_support: "Soporte",
     footer_link_affiliates: "Afiliados",
-    footer_link_try: "Probar MadnessBot",
+    footer_link_try: "Iniciar Prueba Gratis",
     footer_get_started: "Comenzar",
     footer_get_started_desc: "¿Listo para transformar tu taller con diagnósticos impulsados por IA?",
     footer_cta: "Comenzar Prueba Gratis",
-    footer_copyright: "© 2025 MadnessBot. Todos los derechos reservados",
+    footer_copyright: "© 2026 MadnessBot. Todos los derechos reservados",
 
     // Support Page
     support_back: "← Volver al Inicio",
@@ -645,14 +645,14 @@ export const translations = {
     nav_about: "Sobre",
     nav_pricing: "Planos",
     nav_support: "Suporte",
-    nav_try: "Testar o MadnessBot",
+    nav_try: "Iniciar Teste Grátis",
 
     // Hero Section
     hero_title_1: "O Mestre Mecânico ",
     hero_title_2: "da Sua Oficina",
     hero_title_3: ", disponível 24/7",
     hero_subtitle: "Orientação diagnóstica com IA, busca de peças em tempo real, relatórios de crescimento com pesquisa profunda, e gestão inteligente de ferramentas para profissionais automotivos.",
-    hero_cta_primary: "Experimente o MadnessBot",
+    hero_cta_primary: "Iniciar Teste Grátis",
     hero_cta_secondary: "Saiba Mais",
     hero_note: "7 dias de teste grátis • Sem cartão de crédito • Acesso completo aos recursos",
 
@@ -758,11 +758,11 @@ export const translations = {
     footer_link_pricing: "Planos",
     footer_link_support: "Suporte",
     footer_link_affiliates: "Afiliados",
-    footer_link_try: "Testar o MadnessBot",
+    footer_link_try: "Iniciar Teste Grátis",
     footer_get_started: "Começar",
     footer_get_started_desc: "Pronto para transformar sua oficina com diagnósticos guiados por IA?",
     footer_cta: "Iniciar Teste Grátis",
-    footer_copyright: "© 2025 MadnessBot. Todos os direitos reservados",
+    footer_copyright: "© 2026 MadnessBot. Todos os direitos reservados",
 
     // Support Page
     support_back: "← Voltar para o Início",

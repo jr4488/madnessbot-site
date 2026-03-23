@@ -247,7 +247,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <Button className="w-full border-[#2A2A3A] text-[#D4D4D4] hover:bg-[#1A1A25]" variant="outline" asChild>
-                    <a href="mailto:sales@madnesstools.com" onClick={() => trackConversion('leadEnterprise')}>
+                    <a href="mailto:sales@madnessbot.com" onClick={() => trackConversion('leadEnterprise')}>
                       {t("pricing_ent_cta")}
                     </a>
                   </Button>

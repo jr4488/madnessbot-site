@@ -132,7 +132,10 @@ function isMadnessToolsUrl(href: string): boolean {
     if (url.protocol !== "http:" && url.protocol !== "https:") {
       return false;
     }
-    return url.hostname.endsWith("madnesstools.com");
+    return (
+      url.hostname.endsWith("madnesstools.com") ||
+      url.hostname.endsWith("madnessbot.com")
+    );
   } catch {
     return false;
   }
