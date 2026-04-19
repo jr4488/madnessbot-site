@@ -433,7 +433,7 @@ const SocialCard = ({
 );
 
 export default function Affiliates() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState("overview");
 
   const iconSvg = `<svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -472,8 +472,10 @@ export default function Affiliates() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title={`${t("aff_tab_overview")} - MadnessBot`}
+        title={`${t("aff_tab_overview")} | MadnessBot Affiliates`}
         description={t("aff_hero_subtitle")}
+        url="https://madnessbot.com/affiliates"
+        lang={language}
       />
       <Navigation />
 

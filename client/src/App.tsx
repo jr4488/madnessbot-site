@@ -10,6 +10,7 @@ import Support from "./pages/Support";
 import Affiliates from "./pages/Affiliates";
 import { useEffect, useRef } from "react";
 import { startAffiliateLinkRewriter } from "./lib/affiliate";
+import { trackPageView } from "./lib/analytics";
 
 function Router() {
   return (
@@ -49,6 +50,20 @@ function AffiliateLinkRewriter() {
   return null;
 }
 
+function AnalyticsRouteTracker() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      trackPageView();
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [location]);
+
+  return null;
+}
+
 // NOTE: About Theme
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
 //   to keep consistent foreground/background color across components
@@ -65,6 +80,7 @@ function App() {
           <TooltipProvider>
             <Toaster />
             <ScrollToTop />
+            <AnalyticsRouteTracker />
             <AffiliateLinkRewriter />
             <Router />
           </TooltipProvider>

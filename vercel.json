@@ -4,6 +4,8 @@
   "outputDirectory": "dist/public",
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/support/?$", "dest": "/support/index.html" },
+    { "src": "/affiliates/?$", "dest": "/affiliates/index.html" },
     { "src": "/.*", "dest": "/index.html" }
   ]
 }

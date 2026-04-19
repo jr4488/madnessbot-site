@@ -179,8 +179,11 @@ export default function Support() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title={`${t("support_title")} - MadnessBot`}
+        title={`${t("support_title")} | MadnessBot Support`}
         description={t("support_subtitle")}
+        url="https://madnessbot.com/support"
+        type="website"
+        lang={language}
       />
       <Navigation />
 

@@ -25,12 +25,17 @@ const BackgroundPattern = () => (
 );
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const madnessToolsUrl = appendViaParam("https://madnesstools.com");
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEO />
+      <SEO
+        title="MadnessBot | AI Master Mechanic for Diagnostics, Parts, and Repair Shops"
+        description="MadnessBot helps mechanics and automotive repair shops diagnose problems faster, source parts, manage tools, and access shop-ready AI support."
+        url="https://madnessbot.com/"
+        lang={language}
+      />
       <Navigation />
 
       <main>

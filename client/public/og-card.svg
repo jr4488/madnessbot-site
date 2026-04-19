@@ -1,0 +1,29 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="60" x2="1120" y2="570" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A0A0F"/>
+      <stop offset="0.58" stop-color="#111118"/>
+      <stop offset="1" stop-color="#1A1A25"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="325" y1="120" x2="930" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6A1A" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FF4D00" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="40" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="550" rx="32" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <circle cx="1035" cy="142" r="96" fill="#FF4D00" fill-opacity="0.18"/>
+  <circle cx="925" cy="494" r="148" fill="#FF4D00" fill-opacity="0.12"/>
+  <path d="M112 506V160H182V316L264 160L362 392L458 160L544 160V316L628 160V506H520V292L430 472L360 328L276 472L184 292V506H112Z" fill="#FF4D00"/>
+  <path d="M697 115C622 155 554 237 540 320C646 190 805 144 955 170C996 177 1038 189 1080 208C1021 146 928 110 820 110C778 110 737 112 697 115Z" fill="url(#accent)"/>
+  <text x="678" y="244" fill="#FF4D00" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="4">AI MASTER MECHANIC</text>
+  <text x="678" y="332" fill="#F5F5F5" font-family="'Zen Dots', Arial, sans-serif" font-size="76">MadnessBot</text>
+  <text x="678" y="404" fill="#D1D5DB" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="34">
+    Diagnostics, parts sourcing, support, and shop workflows
+  </text>
+  <text x="678" y="452" fill="#D1D5DB" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="34">
+    built for mechanics and automotive repair teams.
+  </text>
+  <rect x="678" y="494" width="248" height="56" rx="28" fill="#FF4D00"/>
+  <text x="715" y="530" fill="#0A0A0F" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="25" font-weight="700">MadnessBot.com</text>
+</svg>

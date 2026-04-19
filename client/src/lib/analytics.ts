@@ -12,11 +12,7 @@
 
 declare global {
     interface Window {
-        gtag: (
-            command: 'config' | 'event' | 'js',
-            targetId: string | Date,
-            config?: Record<string, unknown>
-        ) => void;
+        gtag?: (...args: unknown[]) => void;
         dataLayer: unknown[];
     }
 }
@@ -25,7 +21,9 @@ declare global {
 // CONFIGURATION - Edit these values with your Google Ads conversion labels
 // ============================================================================
 
+export const GA4_MEASUREMENT_ID = 'G-JZKLEEF89F';
 const GOOGLE_ADS_ID = 'AW-17788348941';
+const ANALYTICS_IGNORED_QUERY_PARAMS = ['via', 'referral'];
 
 /**
  * Conversion labels from Google Ads.
@@ -55,6 +53,49 @@ const CONVERSION_CONFIG = {
 // ============================================================================
 
 export type ConversionEvent = keyof typeof CONVERSION_CONFIG;
+
+export function buildPageViewPayload(input?: string) {
+    const rawInput =
+        input ??
+        (typeof window !== 'undefined' ? window.location.href : 'https://madnessbot.com/');
+    const baseOrigin =
+        typeof window !== 'undefined' ? window.location.origin : 'https://madnessbot.com';
+    const pageUrl = new URL(rawInput, baseOrigin);
+    pageUrl.hash = '';
+
+    for (const key of ANALYTICS_IGNORED_QUERY_PARAMS) {
+        pageUrl.searchParams.delete(key);
+    }
+
+    if (pageUrl.pathname !== '/') {
+        pageUrl.pathname = pageUrl.pathname.replace(/\/+$/, '');
+    }
+
+    return {
+        pageLocation: pageUrl.toString(),
+        pagePath: `${pageUrl.pathname}${pageUrl.search}`,
+    };
+}
+
+export function trackPageView(input?: string): boolean {
+    if (typeof window === 'undefined' || !window.gtag) {
+        return false;
+    }
+
+    const { pageLocation, pagePath } = buildPageViewPayload(input);
+
+    window.gtag('config', GA4_MEASUREMENT_ID, {
+        page_location: pageLocation,
+        page_path: pagePath,
+        page_title: document.title,
+    });
+
+    if (import.meta.env.DEV) {
+        console.log(`[Analytics] Page view tracked: ${pagePath}`);
+    }
+
+    return true;
+}
 
 /**
  * Track a conversion event in Google Ads.
