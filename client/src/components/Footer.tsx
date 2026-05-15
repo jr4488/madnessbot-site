@@ -4,7 +4,7 @@ import { appendAffiliateParams, appendViaParam } from "@/lib/affiliate";
 
 export default function Footer() {
   const { t } = useLanguage();
-  const madnessToolsUrl = appendViaParam("https://madnesstools.com");
+  const appUrl = appendViaParam("https://app.madnessbot.com");
   const homeHref = appendAffiliateParams("/");
   const supportHref = appendAffiliateParams("/support");
   const affiliatesHref = appendAffiliateParams("/affiliates");
@@ -56,7 +56,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={madnessToolsUrl}
+                  href={appUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"

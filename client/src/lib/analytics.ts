@@ -18,7 +18,7 @@ declare global {
 }
 
 // ============================================================================
-// CONFIGURATION - Edit these values with your Google Ads conversion labels
+// CONFIGURATION - Conversion labels must be provided through Vite env vars.
 // ============================================================================
 
 export const GA4_MEASUREMENT_ID = 'G-JZKLEEF89F';
@@ -35,17 +35,17 @@ const ANALYTICS_IGNORED_QUERY_PARAMS = ['via', 'referral'];
  * 3. Copy just the label part (after the /)
  */
 const CONVERSION_CONFIG = {
-    // Sign up / Start trial - tracks when user clicks to sign up
-    signUp: 'OYU7CPyrvM4bEI3UkqJC', // TODO: Replace with actual Sign Up label
+    // Sign up / Start trial - the app fires this after registration succeeds.
+    signUp: import.meta.env.VITE_GOOGLE_ADS_SIGNUP_LABEL || '',
 
     // Purchase DIY plan ($19.95/mo)
-    purchaseDiy: '', // TODO: Add label from Google Ads
+    purchaseDiy: import.meta.env.VITE_GOOGLE_ADS_PURCHASE_DIY_LABEL || '',
 
-    // Purchase Pro plan ($49.95/mo) 
-    purchasePro: 'OYU7CPyrvM4bEI3UkqJC', // This one was retrieved successfully
+    // Purchase Pro plan ($49.95/mo) - the app fires this after Stripe confirms payment.
+    purchasePro: import.meta.env.VITE_GOOGLE_ADS_PURCHASE_PRO_LABEL || '',
 
     // Enterprise lead inquiry
-    leadEnterprise: '', // TODO: Add label from Google Ads
+    leadEnterprise: import.meta.env.VITE_GOOGLE_ADS_LEAD_ENTERPRISE_LABEL || '',
 } as const;
 
 // ============================================================================
