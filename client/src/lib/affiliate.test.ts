@@ -28,6 +28,17 @@ describe("appendAffiliateParams", () => {
     );
   });
 
+  it("appends Google Ads and UTM params when present", () => {
+    window.history.replaceState(
+      null,
+      "",
+      "/?gclid=click123&utm_source=google&utm_campaign=trial_search"
+    );
+    expect(appendAffiliateParams("/support")).toBe(
+      "/support?gclid=click123&utm_source=google&utm_campaign=trial_search"
+    );
+  });
+
   it("does not override existing params on the path", () => {
     window.history.replaceState(null, "", "/?via=alpha&referral=beta");
     expect(appendAffiliateParams("/support?via=existing")).toBe(
@@ -83,6 +94,28 @@ describe("appendViaParam", () => {
       "https://example.com/?via=storedvia"
     );
   });
+
+  it("preserves affiliate and ad click params on app links", () => {
+    window.history.replaceState(
+      null,
+      "",
+      "/?via=alpha&gclid=click123&gbraid=braid123&utm_medium=cpc"
+    );
+    expect(appendViaParam("https://app.madnessbot.com")).toBe(
+      "https://app.madnessbot.com/?via=alpha&gclid=click123&gbraid=braid123&utm_medium=cpc"
+    );
+  });
+
+  it("uses stored ad click params when query is empty", () => {
+    window.localStorage.setItem(
+      "madnessbot_tracking_params",
+      JSON.stringify({ gclid: "storedclick", utm_source: "google" })
+    );
+    window.localStorage.setItem("rewardful_referral_ts", String(Date.now()));
+    expect(appendViaParam("https://app.madnessbot.com")).toBe(
+      "https://app.madnessbot.com/?gclid=storedclick&utm_source=google"
+    );
+  });
 });
 
 describe("rewriteMadnessToolsLinks", () => {
@@ -98,6 +131,17 @@ describe("rewriteMadnessToolsLinks", () => {
     const updated = rewriteMadnessToolsLinks(document);
     const anchor = document.getElementById("target") as HTMLAnchorElement;
     expect(anchor.href).toBe("https://madnesstools.com/?via=alpha");
+    expect(updated).toBe(1);
+  });
+
+  it("appends ad click params to app.madnessbot.com anchors", () => {
+    window.history.replaceState(null, "", "/?gclid=click123&utm_term=ai%20mechanic");
+    document.body.innerHTML = '<a id="target" href="https://app.madnessbot.com">Go</a>';
+    const updated = rewriteMadnessToolsLinks(document);
+    const anchor = document.getElementById("target") as HTMLAnchorElement;
+    expect(anchor.href).toBe(
+      "https://app.madnessbot.com/?gclid=click123&utm_term=ai+mechanic"
+    );
     expect(updated).toBe(1);
   });
 
