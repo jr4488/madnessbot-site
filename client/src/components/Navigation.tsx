@@ -10,7 +10,7 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
   const { t } = useLanguage();
-  const madnessToolsUrl = appendViaParam("https://madnesstools.com");
+  const appUrl = appendViaParam("https://app.madnessbot.com");
   const homeHref = appendAffiliateParams("/");
   const supportHref = appendAffiliateParams("/support");
 
@@ -66,7 +66,7 @@ export default function Navigation() {
               </span>
             </Link>
             <Button asChild>
-              <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer">
+              <a href={appUrl} target="_blank" rel="noopener noreferrer">
                 {t("nav_try")}
               </a>
             </Button>
@@ -107,7 +107,7 @@ export default function Navigation() {
                 </span>
               </Link>
               <Button asChild className="w-full">
-                <a href={madnessToolsUrl} target="_blank" rel="noopener noreferrer">
+                <a href={appUrl} target="_blank" rel="noopener noreferrer">
                   {t("nav_try")}
                 </a>
               </Button>
