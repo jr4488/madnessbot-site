@@ -1,14 +1,71 @@
 type AffiliateParams = {
   via?: string;
   referral?: string;
+  tracking?: Record<string, string>;
 };
 
 const AFFILIATE_TTL_MS = 1000 * 60 * 60 * 24 * 60;
+const TRACKING_PARAM_KEYS = [
+  "gclid",
+  "gbraid",
+  "wbraid",
+  "dclid",
+  "gad_source",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "utm_id",
+] as const;
 const STORAGE_KEYS = {
   via: "rewardful_via",
   referral: "rewardful_referral",
   ts: "rewardful_referral_ts",
+  tracking: "madnessbot_tracking_params",
 };
+
+function readTrackingParamsFromStorage(): Record<string, string> | undefined {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEYS.tracking);
+    if (!raw) {
+      return undefined;
+    }
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      window.localStorage.removeItem(STORAGE_KEYS.tracking);
+      return undefined;
+    }
+    const tracking = Object.entries(parsed).reduce<Record<string, string>>(
+      (acc, [key, value]) => {
+        if (
+          TRACKING_PARAM_KEYS.includes(key as (typeof TRACKING_PARAM_KEYS)[number]) &&
+          typeof value === "string" &&
+          value
+        ) {
+          acc[key] = value;
+        }
+        return acc;
+      },
+      {}
+    );
+    return Object.keys(tracking).length ? tracking : undefined;
+  } catch {
+    window.localStorage.removeItem(STORAGE_KEYS.tracking);
+    return undefined;
+  }
+}
+
+function readTrackingParamsFromQuery(params: URLSearchParams): Record<string, string> | undefined {
+  const tracking = TRACKING_PARAM_KEYS.reduce<Record<string, string>>((acc, key) => {
+    const value = params.get(key);
+    if (value) {
+      acc[key] = value;
+    }
+    return acc;
+  }, {});
+  return Object.keys(tracking).length ? tracking : undefined;
+}
 
 function readStoredParams(): AffiliateParams {
   try {
@@ -18,7 +75,8 @@ function readStoredParams(): AffiliateParams {
     const via = window.localStorage.getItem(STORAGE_KEYS.via) || undefined;
     const referral =
       window.localStorage.getItem(STORAGE_KEYS.referral) || undefined;
-    if (!via && !referral) {
+    const tracking = readTrackingParamsFromStorage();
+    if (!via && !referral && !tracking) {
       return {};
     }
     const tsRaw = window.localStorage.getItem(STORAGE_KEYS.ts);
@@ -28,12 +86,13 @@ function readStoredParams(): AffiliateParams {
         window.localStorage.removeItem(STORAGE_KEYS.via);
         window.localStorage.removeItem(STORAGE_KEYS.referral);
         window.localStorage.removeItem(STORAGE_KEYS.ts);
+        window.localStorage.removeItem(STORAGE_KEYS.tracking);
         return {};
       }
-    } else {
+    } else if (via || referral) {
       window.localStorage.setItem(STORAGE_KEYS.ts, String(Date.now()));
     }
-    return { via, referral };
+    return { via, referral, tracking };
   } catch {
     return {};
   }
@@ -45,18 +104,28 @@ function storeParams(params: AffiliateParams) {
       return;
     }
     const { via, referral } = params;
+    const tracking = params.tracking || {};
     if (!via && !referral) {
-      return;
-    }
-    if (via) {
-      window.localStorage.setItem(STORAGE_KEYS.via, via);
+      if (!Object.keys(tracking).length) {
+        return;
+      }
     } else {
-      window.localStorage.removeItem(STORAGE_KEYS.via);
+      if (via) {
+        window.localStorage.setItem(STORAGE_KEYS.via, via);
+      } else {
+        window.localStorage.removeItem(STORAGE_KEYS.via);
+      }
+      if (referral) {
+        window.localStorage.setItem(STORAGE_KEYS.referral, referral);
+      } else {
+        window.localStorage.removeItem(STORAGE_KEYS.referral);
+      }
     }
-    if (referral) {
-      window.localStorage.setItem(STORAGE_KEYS.referral, referral);
+
+    if (Object.keys(tracking).length) {
+      window.localStorage.setItem(STORAGE_KEYS.tracking, JSON.stringify(tracking));
     } else {
-      window.localStorage.removeItem(STORAGE_KEYS.referral);
+      window.localStorage.removeItem(STORAGE_KEYS.tracking);
     }
     window.localStorage.setItem(STORAGE_KEYS.ts, String(Date.now()));
   } catch {
@@ -73,12 +142,18 @@ function getAffiliateParams(search?: string): AffiliateParams {
     }
 
     const params = new URLSearchParams(query);
+    const stored = readStoredParams();
     const via = params.get("via") || undefined;
     const referral = params.get("referral") || undefined;
-    if (!via && !referral) {
+    const tracking = readTrackingParamsFromQuery(params);
+    if (!via && !referral && !tracking) {
       return readStoredParams();
     }
-    const next = { via, referral };
+    const next = {
+      via: via ?? stored.via,
+      referral: referral ?? stored.referral,
+      tracking: tracking ?? stored.tracking,
+    };
     storeParams(next);
     return next;
   } catch {
@@ -86,18 +161,32 @@ function getAffiliateParams(search?: string): AffiliateParams {
   }
 }
 
+function appendTrackingParams(destination: URL, tracking?: Record<string, string>) {
+  if (!tracking) {
+    return;
+  }
+  for (const [key, value] of Object.entries(tracking)) {
+    if (!destination.searchParams.get(key)) {
+      destination.searchParams.set(key, value);
+    }
+  }
+}
+
 export function appendViaParam(url: string, search?: string): string {
   try {
-    const { via, referral } = getAffiliateParams(search);
+    const { via, referral, tracking } = getAffiliateParams(search);
     const value = via ?? referral;
-    if (!value) {
+    if (!value && !tracking) {
       return url;
     }
 
     const destination = new URL(url);
     if (!destination.searchParams.get("via")) {
-      destination.searchParams.set("via", value);
+      if (value) {
+        destination.searchParams.set("via", value);
+      }
     }
+    appendTrackingParams(destination, tracking);
     return destination.toString();
   } catch {
     return url;
@@ -106,8 +195,8 @@ export function appendViaParam(url: string, search?: string): string {
 
 export function appendAffiliateParams(path: string, search?: string): string {
   try {
-    const { via, referral } = getAffiliateParams(search);
-    if (!via && !referral) {
+    const { via, referral, tracking } = getAffiliateParams(search);
+    if (!via && !referral && !tracking) {
       return path;
     }
 
@@ -120,6 +209,7 @@ export function appendAffiliateParams(path: string, search?: string): string {
     if (referral && !destination.searchParams.get("referral")) {
       destination.searchParams.set("referral", referral);
     }
+    appendTrackingParams(destination, tracking);
     return `${destination.pathname}${destination.search}${destination.hash}`;
   } catch {
     return path;
