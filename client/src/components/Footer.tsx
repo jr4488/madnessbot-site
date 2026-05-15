@@ -74,7 +74,7 @@ export default function Footer() {
               {t("footer_get_started_desc")}
             </p>
             <a
-              href={madnessToolsUrl}
+              href={appUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity text-sm font-medium"
